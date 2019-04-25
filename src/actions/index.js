@@ -1,4 +1,9 @@
 export default {
+
+  /*
+   actions for datas in radar chart
+  */
+
   setCompGroups: (data) => (state) => {
     return ({
       ...state,
@@ -16,4 +21,5 @@ export default {
     ...state,
     errMess: mess
   })
+
 }

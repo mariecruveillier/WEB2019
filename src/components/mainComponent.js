@@ -12,7 +12,9 @@ export default (props) =>
     <section id='leftPanel'> // Left part that contains the category selector and the different state (ED, DD, LC ...)
     </section>
     <section id='mainGraphs'>
-      <TreeMapChart />
+      <div id='map'>
+        <TreeMapChart data={{compGroup: props.data.compGroup, setCompGroups: props.data.setCompGroups, setErrorMess: props.data.setErrorMess}} id='map'/>
+      </div>
       <BubbleChart />
       <RadarChart data={{compGroup: props.data.compGroup, setCompGroups: props.data.setCompGroups, setErrorMess: props.data.setErrorMess}}/>
     </section>
