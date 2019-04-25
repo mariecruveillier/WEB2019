@@ -1,25 +1,19 @@
-import {country} from './country'
-import {habitat} from './habitat'
-import {measure} from './measure'
-import {region} from './region'
-import {species} from './species'
-import {threat} from './threat'
-import {compGroup} from './comprehensiveGroups'
-
-const Country = country()
-const Habitat = habitat()
-const Measure = measure()
-const Region = region()
-const Species = species()
-const Threat = threat()
-const CompGroup = compGroup()
-
 export default {
-  Country,
-  Habitat,
-  Measure,
-  Region,
-  Species,
-  Threat,
-  CompGroup
+  setCompGroups: (data) => (state) => {
+    return ({
+      ...state,
+      comprGroups: data.result.reduce((acc, n) => [...acc, {name: n.group_name}], [])
+    })
+  },
+  setQtySpeciesByGroup: (name) => (state) => {
+    const id = state.comprGroups.indexOf(state.comprGroups.find(el => el.name === name))
+    return ({
+      ...state,
+      comprGroups: [...comprGroups, n.group_name]
+    })
+  },
+  setErrorMess: (mess) => (state) => ({
+    ...state,
+    errMess: mess
+  })
 }

@@ -5,8 +5,7 @@ import {
 
 const compGroup = () => {
   return {
-    list: () => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    list: () => new Promise((resolve, reject) => {
       return sendRequest(
         `/comp-group/list`,
         resolve,
@@ -15,8 +14,7 @@ const compGroup = () => {
       )
     }),
 
-    speciesByGroup: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    speciesByGroup: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('group')) {
         return reject(new Error('The group option is required.'))
       }
@@ -26,7 +24,9 @@ const compGroup = () => {
         reject,
         handleResult
       )
-    })
+    }),
+
+    stateDef: state => console.log(state)
   }
 }
 

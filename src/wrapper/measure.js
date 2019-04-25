@@ -3,22 +3,21 @@ import {
   sendRequest
 } from './utils'
 
-const threat = () => {
+const measure = () => {
   return {
-    fetch: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    fetch: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name') && !options.hasOwnProperty('id')) {
         return reject(new Error('You must provide either a name or an id'))
       }
-      let endpoint
+      let endpoint = ``
       if (options.hasOwnProperty('region')) {
         endpoint = options.hasOwnProperty('id')
-          ? `/threats/species/id/${options.id}/region/${options.region}`
-          : `/threats/species/name/${options.name}/region/${options.region}`
+          ? `/measures/species/id/${options.id}/region/${options.region}`
+          : `/measures/species/name/${options.name}/region/${options.region}`
       } else {
         endpoint = options.hasOwnProperty('id')
-          ? `/threats/species/id/${options.id}`
-          : `/threats/species/name/${options.name}`
+          ? `/measures/species/id/${options.id}`
+          : `/measures/species/name/${options.name}`
       }
       return sendRequest(
         endpoint,
@@ -30,4 +29,4 @@ const threat = () => {
   }
 }
 
-export { threat }
+export { measure }

@@ -1,4 +1,8 @@
-body {
+body{
+  background-color: #242222;
+}
+
+/* body {
   font-family: sans-serif;
   display: flex;
   justify-content: center;
@@ -61,3 +65,4 @@ p {
 .sub[disabled] {
   opacity: .5;
 }
+*/

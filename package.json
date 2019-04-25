@@ -30,9 +30,9 @@
     "@babel/preset-stage-3": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^7.0.0",
+    "babel-loader": "^8.0.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-register": "^7.0.0-beta.0",
-    "babel-loader": "^8.0.0",
     "chai": "^4.1.2",
     "css-loader": "^0.28.0",
     "eslint": "^4.13.1",
@@ -46,8 +46,8 @@
     "eslint-plugin-standard": "^3.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "imports": "^1.0.0",
-    "node-libs-browser": "^2.0.0",
     "mocha": "^4.1.0",
+    "node-libs-browser": "^2.0.0",
     "sinon": "^4.3.0",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.4.2",
@@ -55,6 +55,8 @@
   },
   "dependencies": {
     "@hyperapp/logger": "^0.4.1",
+    "canvas": "^2.4.1",
+    "chart.js": "^2.8.0",
     "hyperapp": "^1.1.2",
     "ramda": "^0.25.0"
   }

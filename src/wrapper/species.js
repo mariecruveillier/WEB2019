@@ -5,8 +5,7 @@ import {
 
 const species = () => {
   return {
-    fetch: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    fetch: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('page')) {
         return reject(new Error('The page option is required.'))
       }
@@ -20,8 +19,7 @@ const species = () => {
       )
     }),
 
-    count: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    count: (options) => new Promise((resolve, reject) => {
       return sendRequest(
         options.hasOwnProperty('region')
           ? `/speciescount/region/${options.region}`
@@ -32,8 +30,7 @@ const species = () => {
       )
     }),
 
-    citation: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    citation: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name') && !options.hasOwnProperty('id')) {
         return reject(new Error('You must provide either a name or an id'))
       }
@@ -55,8 +52,7 @@ const species = () => {
       )
     }),
 
-    byCategory: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    byCategory: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('category')) {
         return reject(new Error('The category option is required.'))
       }
@@ -68,8 +64,7 @@ const species = () => {
       )
     }),
 
-    find: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    find: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name') && !options.hasOwnProperty('id')) {
         return reject(new Error('You must provide either a name or an id'))
       }
@@ -91,8 +86,7 @@ const species = () => {
       )
     }),
 
-    narrative: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    narrative: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name') && !options.hasOwnProperty('id')) {
         return reject(new Error('You must provide either a name or an id'))
       }
@@ -114,8 +108,7 @@ const species = () => {
       )
     }),
 
-    synonym: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    synonym: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name')) {
         return reject(new Error('The name option is required.'))
       }
@@ -127,8 +120,7 @@ const species = () => {
       )
     }),
 
-    commonNames: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    commonNames: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name')) {
         return reject(new Error('The name option is required.'))
       }
@@ -140,8 +132,7 @@ const species = () => {
       )
     }),
 
-    countries: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    countries: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name') && !options.hasOwnProperty('id')) {
         return reject(new Error('You must provide either a name or an id'))
       }
@@ -163,8 +154,7 @@ const species = () => {
       )
     }),
 
-    historical: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    historical: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name') && !options.hasOwnProperty('id')) {
         return reject(new Error('You must provide either a name or an id'))
       }
@@ -186,8 +176,7 @@ const species = () => {
       )
     }),
 
-    link: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    link: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name')) {
         return reject(new Error('The name option is required.'))
       }

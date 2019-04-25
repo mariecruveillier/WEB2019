@@ -5,8 +5,7 @@ import {
 
 const region = () => {
   return {
-    all: () => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    all: () => new Promise((resolve, reject) => {
       return sendRequest(
         '/region/list',
         resolve,

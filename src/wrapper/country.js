@@ -5,8 +5,7 @@ import {
 
 const country = () => {
   return {
-    countryList: () => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    countryList: () => new Promise((resolve, reject) => {
       return sendRequest(
         '/country/list',
         resolve,
@@ -14,8 +13,7 @@ const country = () => {
         handleResult
       )
     }),
-    species: (options) => (state) => new Promise((resolve, reject) => {
-      console.log(state)
+    species: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('country')) {
         return reject(new Error('The country option is required.'))
       }
