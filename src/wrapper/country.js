@@ -10,7 +10,8 @@ const country = () => {
         '/country/list',
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
     species: (options) => new Promise((resolve, reject) => {
@@ -21,7 +22,8 @@ const country = () => {
         `/country/getspecies/${options.country}`,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     })
   }

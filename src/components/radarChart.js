@@ -9,33 +9,40 @@ const randomScalingFactor = () => {
   return Math.round(Math.random() * 100)
 }
 export default (props) =>
-  <canvas oncreate={(element) => {
-    let ctx = element.getContext('2d')
-    let chart = new Chart(ctx, {
-      type: 'radar',
-      data: {
-        labels: props.data.compGroup.map(x => x.name),
-        datasets: [{
-          label: 'Comprehensive Groups',
-          backgroundColor: 'rgba(255, 0, 0, 1.0)',
-          borderColor: 'rgba(255, 0, 0, 1.0)',
-          pointBackgroundColor: 'rgba(255, 0, 0, 1.0)',
-          data: new Array(props.data.compGroup.length).fill((Math.random() * (0.1 - 0.5) + 0.5))
-        }]
-      },
-      options: {
-        legend: {
-          position: 'top'
+  <div className='wrapperGraph'>
+    <canvas className='mainChart' oncreate={(element) => {
+      const cpyArr = props.data.classNames
+      let ctx = element.getContext('2d')
+      let chart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+          labels: cpyArr.map(x => x.name),
+          datasets: [{
+            label: 'Differents class of species',
+            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+            borderColor: 'rgba(255, 0, 0, 1.0)',
+            pointBackgroundColor: 'rgba(255, 255, 255, 1)',
+            data: cpyArr.map(x => x.count),
+            pointRadius: 10,
+            pointHoverRadius: 12
+          }]
         },
-        title: {
-          display: true,
-          text: 'Chart.js Radar Chart'
-        },
-        scale: {
-          ticks: {
-            beginAtZero: true
+        options: {
+          legend: {
+            position: 'top'
+          },
+          responsive: true,
+          aspectRatio: 1, /*
+          title: {
+            display: true,
+            text: 'Chart.js Radar Chart'
+          }, */
+          scale: {
+            ticks: {
+              beginAtZero: true
+            }
           }
         }
-      }
-    })
-  }} />
+      })
+    }} />
+  </div>

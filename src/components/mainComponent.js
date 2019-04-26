@@ -8,14 +8,13 @@ import TreeMapChart from './treeMapChart'
 */
 
 export default (props) =>
-  <div>
+  <div id='mainPart'>
     <section id='leftPanel'> // Left part that contains the category selector and the different state (ED, DD, LC ...)
     </section>
     <section id='mainGraphs'>
-      <div id='map'>
-        <TreeMapChart data={{compGroup: props.data.compGroup, setCompGroups: props.data.setCompGroups, setErrorMess: props.data.setErrorMess}} id='map'/>
-      </div>
+      <TreeMapChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}} id='map'/>
       <BubbleChart />
-      <RadarChart data={{compGroup: props.data.compGroup, setCompGroups: props.data.setCompGroups, setErrorMess: props.data.setErrorMess}}/>
+      <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
     </section>
+    <section id='result'></section>
   </div>

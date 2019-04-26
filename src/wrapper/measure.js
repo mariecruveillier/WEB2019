@@ -23,7 +23,8 @@ const measure = () => {
         endpoint,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     })
   }

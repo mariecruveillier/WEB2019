@@ -10,7 +10,8 @@ const compGroup = () => {
         `/comp-group/list`,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -22,7 +23,8 @@ const compGroup = () => {
         `/comp-group/getspecies/${options.group}`,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 

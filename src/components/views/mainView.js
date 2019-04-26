@@ -7,15 +7,15 @@ import Wrapper from '../../wrapper/index'
 export default (state, actions) =>
   <div>
     {
-      !state.comprGroups && (
-        Wrapper.CompGroup.list().then((resolvedValue) => {
-          actions.setCompGroups(resolvedValue)
+      !state.classNames && (
+        Wrapper.ClassName.list({limit: 8}).then((resolvedValue) => {
+          actions.setClassNames(resolvedValue)
         }, (error) => {
           actions.setErrorMess(error)
         })
       )
     }
-    {state.comprGroups && state.comprGroups.length > 0 && (
-      <MainComponent data={{compGroup: state.comprGroups, setCompGroups: actions.setCompGroups, setErrorMess: actions.setErrorMess}}/>
+    {state.classNames && state.classNames.length > 0 && (
+      <MainComponent data={{classNames: state.classNames, setErrorMess: actions.setErrorMess}}/>
     )}
   </div>

@@ -3,8 +3,15 @@ export default {
   /*
    actions for datas in radar chart
   */
-
-  setCompGroups: (data) => (state) => {
+  setClassNames: (data) => (state) => {
+    console.log(data)
+    return ({
+      ...state,
+      classNames: data.list.reduce((acc, n) => [...acc, {name: n.className, count: n.count}], [])
+    })
+  },
+  
+  /* setCompGroups: (data) => (state) => {
     return ({
       ...state,
       comprGroups: data.result.reduce((acc, n) => [...acc, {name: n.group_name}], [])
@@ -16,7 +23,7 @@ export default {
       ...state,
       comprGroups: [...comprGroups, n.group_name]
     })
-  },
+  }, */
   setErrorMess: (mess) => (state) => ({
     ...state,
     errMess: mess

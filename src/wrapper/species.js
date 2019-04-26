@@ -15,7 +15,8 @@ const species = () => {
           : `/species/page/${options.page}`,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -26,7 +27,8 @@ const species = () => {
           : '/speciescount',
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -48,7 +50,8 @@ const species = () => {
         endpoint,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -60,7 +63,8 @@ const species = () => {
         `/species/category/${options.category}`,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -82,7 +86,8 @@ const species = () => {
         endpoint,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -104,7 +109,8 @@ const species = () => {
         endpoint,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -116,7 +122,8 @@ const species = () => {
         `/species/synonym/${options.name}`,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -128,7 +135,8 @@ const species = () => {
         `/species/common_names/${options.name}`,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -150,7 +158,8 @@ const species = () => {
         endpoint,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -172,7 +181,8 @@ const species = () => {
         endpoint,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     }),
 
@@ -184,7 +194,8 @@ const species = () => {
         `/weblink/${options.name}`,
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     })
   }

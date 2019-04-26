@@ -10,7 +10,8 @@ const region = () => {
         '/region/list',
         resolve,
         reject,
-        handleResult
+        handleResult,
+        0
       )
     })
   }
