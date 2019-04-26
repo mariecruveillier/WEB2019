@@ -4,13 +4,19 @@ export default {
    actions for datas in radar chart
   */
   setClassNames: (data) => (state) => {
-    console.log(data)
     return ({
       ...state,
       classNames: data.list.reduce((acc, n) => [...acc, {name: n.className, count: n.count}], [])
     })
   },
-  
+
+  setResult: (data) => (state) => {
+    return ({
+      ...state,
+      resultList: data.list.reduce((acc, n) => [...acc, {name: n.name}], [])
+    })
+  },
+
   /* setCompGroups: (data) => (state) => {
     return ({
       ...state,
@@ -28,5 +34,4 @@ export default {
     ...state,
     errMess: mess
   })
-
 }

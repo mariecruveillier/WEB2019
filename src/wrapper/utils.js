@@ -3,7 +3,7 @@ const handleResult = (resolve, reject, err, data) => {
   return data ? resolve(data) : reject(new Error('No data found'))
 }
 
-const sendRequest = (endpoint, resolve, reject, handle, apiSelect) => { // apiSelect = 0 -> RedList API | = 1 -> custom API 
+const sendRequest = (endpoint, resolve, reject, handle, apiSelect) => { // apiSelect = 0 -> RedList API | = 1 -> custom API
   const token = '9bb4facb6d23f48efbf424bb05c0c1ef1cf6f468393bc745d42179ac4aca5fee'
   const params = {
     host: apiSelect === 0 ? 'apiv3.iucnredlist.org' : 'polar-lake-81372.herokuapp.com',

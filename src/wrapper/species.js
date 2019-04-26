@@ -32,6 +32,28 @@ const species = () => {
       )
     }),
 
+    search: (options) => new Promise((resolve, reject) => {
+      if (options.hasOwnProperty('entry')) {
+        if (options.hasOwnProperty('limit')) {
+          return sendRequest(
+            `/species/search/${options.entry}/limit/${options.limit}`,
+            resolve,
+            reject,
+            handleResult,
+            1
+          )
+        } else {
+          return sendRequest(
+            `/species/search/${options.entry}`,
+            resolve,
+            reject,
+            handleResult,
+            1
+          )
+        }
+      }
+    }),
+
     citation: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('name') && !options.hasOwnProperty('id')) {
         return reject(new Error('You must provide either a name or an id'))

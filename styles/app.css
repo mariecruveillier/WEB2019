@@ -3,6 +3,7 @@ body{
   height: 100%;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 #mainPart{
@@ -19,6 +20,29 @@ body{
 .wrapperGraph{
   width: 400px; 
   height: 400px !important;
+}
+#searchContainer{
+  width: 100%;
+  background: rgba(255,255,255, 1.0);
+  padding: 15px 0;
+}
+#searchBar{
+  position: relative;
+  width: 60%;
+  height: 30px;
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid #AAA;
+}
+#result{
+  display: flex; 
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#result p{
+  padding: 5px 10px;
+  background: #fff;
+  margin: 5px; 
 }
 .node {
   border: solid 1px white;

@@ -16,6 +16,6 @@ export default (state, actions) =>
       )
     }
     {state.classNames && state.classNames.length > 0 && (
-      <MainComponent data={{classNames: state.classNames, setErrorMess: actions.setErrorMess}}/>
+      <MainComponent data={{classNames: state.classNames, resultList: state.resultList, setErrorMess: actions.setErrorMess, setResult: actions.setResult, search: Wrapper.Species.search}}/>
     )}
   </div>
