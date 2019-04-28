@@ -31,27 +31,17 @@ const species = () => {
         0
       )
     }),
-
+    /* ICICICICICICICIICCI RECHEHRHEHFHE */
     search: (options) => new Promise((resolve, reject) => {
-      if (options.hasOwnProperty('entry')) {
-        if (options.hasOwnProperty('limit')) {
-          return sendRequest(
-            `/species/search/${options.entry}/limit/${options.limit}`,
-            resolve,
-            reject,
-            handleResult,
-            1
-          )
-        } else {
-          return sendRequest(
-            `/species/search/${options.entry}`,
-            resolve,
-            reject,
-            handleResult,
-            1
-          )
-        }
-      }
+      console.log(options)
+      let endpoint = `/species/search/${options.entry === '' ? null : options.entry}/class/${options.className === '' ? null : options.className}/category/${options.category === '' ? null : options.category}/limit/${options.limit}`
+      return sendRequest(
+        endpoint,
+        resolve,
+        reject,
+        handleResult,
+        1
+      )
     }),
 
     citation: (options) => new Promise((resolve, reject) => {

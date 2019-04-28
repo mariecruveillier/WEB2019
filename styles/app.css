@@ -4,6 +4,7 @@ body{
   padding: 0;
   margin: 0;
   text-align: center;
+  color: #fff;
 }
 
 #mainPart{
@@ -38,11 +39,37 @@ body{
   display: flex; 
   justify-content: center;
   flex-wrap: wrap;
+  color: #000;
 }
 #result p{
   padding: 5px 10px;
   background: #fff;
   margin: 5px; 
+}
+#leftPanel{
+  position: fixed;
+  height: 100%;
+  width: 150px;
+  background: rgba(0,0,0,0.2);
+}
+#mainViewer{
+  position: relative;
+  margin-left: 150px;
+}
+.category{
+  cursor: pointer;
+}
+.category.active .displayed{
+  display: block;
+}
+.category .displayed{
+  display: none;
+}
+.category.active .notDisplayed{
+  display: none;
+}
+.category .notDisplayed{
+  display: block;
 }
 .node {
   border: solid 1px white;

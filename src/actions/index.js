@@ -1,8 +1,7 @@
+import {species} from '../wrapper/species'
+
 export default {
 
-  /*
-   actions for datas in radar chart
-  */
   setClassNames: (data) => (state) => {
     return ({
       ...state,
@@ -10,26 +9,79 @@ export default {
     })
   },
 
+  // Setting the result
   setResult: (data) => (state) => {
+    const newState = ({
+      ...state,
+      researchData: {
+        ...state.researchData,
+        updated: true
+      },
+      resultList: data.list.reduce((acc, n) => [...acc, {name: n.name}], [])
+    })
+    console.log(newState)
+    return newState
+  },
+
+  setResearchData: (val) => (state) => { // [input, className, category, setResultat, setErrorMessage]
+    const newState = ({
+      ...state,
+      researchData: {
+        input: val.input !== null ? val.input : state.researchData.input,
+        className: val.className !== null ? val.className : state.researchData.className,
+        category: val.category !== null ? val.category : state.researchData.category,
+        updated: true
+      }
+    })
+    species().search({
+      entry: newState.researchData.input,
+      className: newState.researchData.className,
+      category: newState.researchData.category,
+      limit: 8
+    }).then((resolvedValue) => {
+      val.setResultat(resolvedValue)
+    }, (error) => {
+      val.setErrorMessage(error)
+    })
+    return newState
+  },
+
+  // Setting all the categories
+  setCategory: (data) => (state) => {
     return ({
       ...state,
-      resultList: data.list.reduce((acc, n) => [...acc, {name: n.name}], [])
+      categoryList: data.categories.reduce((acc, n) => [...acc, {name: n.redlistCategory, state: false}], [])
     })
   },
 
-  /* setCompGroups: (data) => (state) => {
-    return ({
-      ...state,
-      comprGroups: data.result.reduce((acc, n) => [...acc, {name: n.group_name}], [])
-    })
+  // toggle (if it's false -> true, if it's true -> false) category that have been clicked
+  toggleCategory: (name) => (state) => {
+    console.log(name)
+    const id = state.categoryList.indexOf(state.categoryList.find(el => el.name === name))
+    const arr = state.categoryList.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
+    if (state.categoryList[id].state) {
+      return ({
+        ...state,
+        researchData: {
+          ...state.researchData,
+          category: '',
+          updated: false
+        },
+        categoryList: [...arr.slice(0, id), {name: name, state: !state.categoryList[id].state}, ...arr.slice(id + 1, arr.length)]
+      })
+    } else {
+      return ({
+        ...state,
+        researchData: {
+          ...state.researchData,
+          category: name,
+          updated: false
+        },
+        categoryList: [...arr.slice(0, id), {name: name, state: !state.categoryList[id].state}, ...arr.slice(id + 1, arr.length)]
+      })
+    }
   },
-  setQtySpeciesByGroup: (name) => (state) => {
-    const id = state.comprGroups.indexOf(state.comprGroups.find(el => el.name === name))
-    return ({
-      ...state,
-      comprGroups: [...comprGroups, n.group_name]
-    })
-  }, */
+
   setErrorMess: (mess) => (state) => ({
     ...state,
     errMess: mess

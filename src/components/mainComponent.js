@@ -1,7 +1,8 @@
 import { h } from 'hyperapp'
 import RadarChart from './radarChart'
 import BubbleChart from './bubbleChart'
-import TreeMapChart from './treeMapChart'
+import LeftComponent from './leftComponent'
+import { species } from '../wrapper/species'
 
 /*
   Component that display the main page of the dashboard
@@ -9,36 +10,45 @@ import TreeMapChart from './treeMapChart'
 
 export default (props) =>
   <div id='mainPart'>
-    <section id='leftPanel'> // Left part that contains the category selector and the different state (ED, DD, LC ...)
-    </section>
-    <section id='mainGraphs'>
-      <TreeMapChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}} id='map'/>
-      <BubbleChart />
-      <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
-    </section>
-    <section id='searchContainer'>
-      <input id='searchBar' type="text" placeholder='Research...'
-        onkeyup = {(e) => {
-          if (e.target.value.length !== 0) { // if input value isn't null
-            props.data.search({entry: e.target.value, limit: 10}).then((value) => {
-              props.data.setResult(value)
-            }, (err) => {
-              props.data.setErrorMess(err)
-            })
-          } else {
-            props.data.setResult({list: []})
+    <LeftComponent data={{
+      setCategory: props.data.setCategory,
+      categoryList: props.data.categoryList,
+      setErrorMess: props.data.setErrorMess,
+      toggleCategory: props.data.toggleCategory
+    }} />
+    <div id='mainViewer'>
+      <section id='mainGraphs'>
+        { /*
+        <TreeMapChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}} />
+        */ }
+        <BubbleChart />
+        <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
+      </section>
+      <section id='searchContainer'>
+        <input id='searchBar' type="text" placeholder='Research...'
+          onkeyup = {(e) => {
+            props.data.setResearchData({input: e.target.value, className: null, category: null, setResultat: props.data.setResult, setErrorMessage: props.data.setErrorMess})
           }
+          }
+        />
+      </section>
+      <section id='result'>
+        {
+          !props.data.resultUpdated && (
+            species().search(props.data.researchData).then((resolvedValue) => {
+              props.data.setResult(resolvedValue)
+            }, (error) => {
+              props.data.setErrorMess(error)
+            })
+          )
         }
+        {
+          props.data.resultList && (
+            props.data.resultList.map(res => {
+              return <p>{res.name}</p>
+            })
+          )
         }
-      />
-    </section>
-    <section id='result'>
-      {
-        props.data.resultList && (
-          props.data.resultList.map(res => {
-            return <p>{res.name}</p>
-          })
-        )
-      }
-    </section>
+      </section>
+    </div>
   </div>
