@@ -86,4 +86,13 @@ export default {
     ...state,
     errMess: mess
   })
+  /*
+  // Setting all the comprehensiveGroups
+  setCompGroup: (data) => (state) => {
+    return ({
+      ...state,
+      compGroupList: data.compGroup.reduce((acc, n) => [...acc, {name: n.redlistCategory, state: false}], [])
+    })
+  }
+*/
 }

@@ -2,6 +2,7 @@ import { h } from 'hyperapp'
 import RadarChart from './radarChart'
 import BubbleChart from './bubbleChart'
 import LeftComponent from './leftComponent'
+import CountryChart from './graphCountry'
 import { species } from '../wrapper/species'
 
 /*
@@ -18,9 +19,7 @@ export default (props) =>
     }} />
     <div id='mainViewer'>
       <section id='mainGraphs'>
-        { /*
-        <TreeMapChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}} />
-        */ }
+        <CountryChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
         <BubbleChart />
         <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
       </section>
