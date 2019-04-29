@@ -22,4 +22,7 @@ export default {
     errMess: mess
   })
 
+  /*
+   actions for datas in line chart
+  */
 }

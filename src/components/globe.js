@@ -7,15 +7,11 @@ require('echarts')
 require('echarts-gl')
 
 const canvas = document.createElement('canvas')
-//const mapChart = echarts.init(document.getElementById('map'))
-
-
+// const mapChart = echarts.init(document.getElementById('map'))
 const mapChart = echarts.init(canvas, null, {
   width: 4096,
   height: 2048
 })
-
-
 mapChart.setOption({
   backgroundColor: '#cdcfd5',
   visualMap: {

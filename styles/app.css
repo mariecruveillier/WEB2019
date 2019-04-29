@@ -2,15 +2,10 @@ body{
   background-color: #242222;
 }
 
-.node {
-  border: solid 1px white;
-  font: 10px sans-serif;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 2px;
+#country {
+  height : 50%;
+  width : 50%;
 }
-
 /* body {
   font-family: sans-serif;
   display: flex;
