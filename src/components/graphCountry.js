@@ -1,26 +1,26 @@
 import { h } from 'hyperapp'
 import Chart from 'chart.js'
+import {country} from '../wrapper/country'
 
 const speedCanvas = document.getElementById('mainGraphs')
 
 Chart.defaults.global.defaultFontFamily = 'Lato'
-Chart.defaults.global.defaultFontSize = 12
+Chart.defaults.global.defaultFontSize = 18
 
 export default (props) =>
   <div className='wrapperGraph'>
-    <canvas className='mainCHart' oncreate={(element) => {
-      const cpyArr = props.data.classNames
+    <canvas className='mainChart' oncreate={(element) => {
       let ctx = element.getContext('2d')
+      console.log(props)
       const speedData = {
-        labels: cpyArr.map(x => x.name),
+        labels: props.data.countryList.map(x => x.name),
         datasets: [{
           label: ['Country'],
-          data: ['10', '20', '30', '40', '5', '6', '7', '8', '1', '2', '3', '4', '5', '6', '7', '8'],
-          // data: new Array(props.data.compGroup.length),
+          data: props.data.countryList.map(x => x.count),
           lineTension: 0,
           fill: false,
           borderColor: 'black',
-          backgroundColor: ['green', 'blue', 'red', 'yellow', 'green', 'blue', 'red', 'yellow', 'green', 'blue', 'red', 'yellow'],
+          backgroundColor: 'white',
           pointBorderColor: 'orange',
           pointBackgroundColor: 'rgba(255,150,0,0.5)',
           borderDash: [5, 5],
@@ -57,9 +57,8 @@ export default (props) =>
           }]
         }
       }
-      console.log(speedCanvas)
       const lineChart = new Chart(ctx, {
-        type: 'pie',
+        type: 'bar',
         data: speedData
         // options: chartOptions
       })

@@ -30,6 +30,7 @@ export default {
         input: val.input !== null ? val.input : state.researchData.input,
         className: val.className !== null ? val.className : state.researchData.className,
         category: val.category !== null ? val.category : state.researchData.category,
+        country: val.country !== null ? val.country : state.researchData.country,
         updated: true
       }
     })
@@ -85,7 +86,14 @@ export default {
   setErrorMess: (mess) => (state) => ({
     ...state,
     errMess: mess
-  })
+  }),
+
+  setCountry: (data) => (state) => {
+    return ({
+      ...state,
+      country: data.countryList.reduce((acc, n) => [...acc, {name: n.countryName, count: n.count}], [])
+    })
+  }
   /*
   // Setting all the comprehensiveGroups
   setCompGroup: (data) => (state) => {

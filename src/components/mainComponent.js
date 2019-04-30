@@ -19,7 +19,7 @@ export default (props) =>
     }} />
     <div id='mainViewer'>
       <section id='mainGraphs'>
-        <CountryChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
+        <CountryChart data={{countryList: props.data.countryList, setErrorMess: props.data.setErrorMess}}/>
         <BubbleChart />
         <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
       </section>

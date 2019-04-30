@@ -5,13 +5,13 @@ import {
 
 const country = () => {
   return {
-    countryList: () => new Promise((resolve, reject) => {
+    countryList: (options) => new Promise((resolve, reject) => {
       return sendRequest(
-        '/country/list',
+        `/country/list`,
         resolve,
         reject,
         handleResult,
-        0
+        1
       )
     }),
     species: (options) => new Promise((resolve, reject) => {
@@ -28,5 +28,4 @@ const country = () => {
     })
   }
 }
-
 export { country }

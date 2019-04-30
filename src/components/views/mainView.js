@@ -15,14 +15,25 @@ export default (state, actions) =>
         })
       )
     }
+    {
+      !state.country && (
+        Wrapper.Country.countryList().then((resolvedValue) => {
+          actions.setCountry(resolvedValue)
+        }, (error) => {
+          actions.setErrorMess(error)
+        })
+      )
+    }
     {state.classNames && state.classNames.length > 0 && (
       <MainComponent data={{
         classNames: state.classNames,
+        countryList: state.country,
         resultList: state.resultList,
         setErrorMess: actions.setErrorMess,
         setResult: actions.setResult,
         search: Wrapper.Species.search,
         setCategory: actions.setCategory,
+        setCountry: actions.setCountry,
         toggleCategory: actions.toggleCategory,
         categoryList: state.categoryList,
         setResearchData: actions.setResearchData,
@@ -31,6 +42,7 @@ export default (state, actions) =>
           entry: state.researchData.input,
           className: state.researchData.className,
           category: state.researchData.category,
+          country: state.researchData.country,
           limit: 8
         }
       }}/>
