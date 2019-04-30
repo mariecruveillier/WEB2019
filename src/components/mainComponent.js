@@ -44,7 +44,7 @@ export default (props) =>
         {
           props.data.resultList && (
             props.data.resultList.map(res => {
-              return <p>{res.name}</p>
+              return <p onclick = {() => props.data.setActive(res.id)}>{res.name}</p>
             })
           )
         }

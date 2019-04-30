@@ -5,6 +5,32 @@ import {
 
 const species = () => {
   return {
+    nameInfo: (options) => new Promise((resolve, reject) => {
+      if (!options.hasOwnProperty('id')) {
+        return reject(new Error('The page option is required.'))
+      }
+      return sendRequest(
+        `/species/nameInfo/${options.id}`,
+        resolve,
+        reject,
+        handleResult,
+        1
+      )
+    }),
+
+    populationTrend: (options) => new Promise((resolve, reject) => {
+      if (!options.hasOwnProperty('id')) {
+        return reject(new Error('The page option is required.'))
+      }
+      return sendRequest(
+        `/population/${options.id}`,
+        resolve,
+        reject,
+        handleResult,
+        1
+      )
+    }),
+
     fetch: (options) => new Promise((resolve, reject) => {
       if (!options.hasOwnProperty('page')) {
         return reject(new Error('The page option is required.'))
@@ -33,7 +59,6 @@ const species = () => {
     }),
     /* ICICICICICICICIICCI RECHEHRHEHFHE */
     search: (options) => new Promise((resolve, reject) => {
-      console.log(options)
       let endpoint = `/species/search/${options.entry === '' ? null : options.entry}/class/${options.className === '' ? null : options.className}/category/${options.category === '' ? null : options.category}/limit/${options.limit}`
       return sendRequest(
         endpoint,

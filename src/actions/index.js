@@ -17,9 +17,8 @@ export default {
         ...state.researchData,
         updated: true
       },
-      resultList: data.list.reduce((acc, n) => [...acc, {name: n.name}], [])
+      resultList: data.list.reduce((acc, n) => [...acc, {name: n.name, id: n.internalTaxonId}], [])
     })
-    console.log(newState)
     return newState
   },
 
@@ -92,6 +91,117 @@ export default {
     return ({
       ...state,
       country: data.countryList.reduce((acc, n) => [...acc, {name: n.countryName, count: n.count}], [])
+    })
+  },
+
+  setActiveSpecies: (id) => (state) => {
+    const newState = ({
+      ...state,
+      activeSpeciesInfos: {
+        ...state.activeSpeciesInfos,
+        id: {val: id, state: true}
+      },
+      activeSpecies: true
+    })
+    return newState
+  },
+
+  setThreat: (threats) => (state) => {
+    const allKeys = Object.keys(state.activeSpeciesInfos)
+    const countKeys = allKeys.length
+    const countActive = allKeys.reduce((acc, n) => state.activeSpeciesInfos[n].state ? acc + 1 : acc + 0, 0) + 1 // Count the number of loaded parts in the species Component
+    
+    const newState = ({
+      ...state,
+      activeSpeciesInfos: {
+        ...state.activeSpeciesInfos,
+        threats: {val: threats.result, state: true}
+      },
+      checkAllActive: countActive >= countKeys
+    })
+
+    return newState
+  },
+
+  setHabitat: (habitat) => (state) => {
+    const allKeys = Object.keys(state.activeSpeciesInfos)
+    const countKeys = allKeys.length
+    const countActive = allKeys.reduce((acc, n) => state.activeSpeciesInfos[n].state ? acc + 1 : acc + 0, 0) + 1 // Count the number of loaded parts in the species Component
+    
+    const newState = ({
+      ...state,
+      activeSpeciesInfos: {
+        ...state.activeSpeciesInfos,
+        habitats: {val: habitat.result, state: true}
+      },
+      checkAllActive: countActive >= countKeys
+    })
+    return newState
+  }, 
+
+  setMeasure: (measure) => (state) => {
+    const allKeys = Object.keys(state.activeSpeciesInfos)
+    const countKeys = allKeys.length
+    const countActive = allKeys.reduce((acc, n) => state.activeSpeciesInfos[n].state ? acc + 1 : acc + 0, 0) + 1 // Count the number of loaded parts in the species Component
+    
+    const newState = ({
+      ...state,
+      activeSpeciesInfos: {
+        ...state.activeSpeciesInfos,
+        measures: {val: measure.result, state: true}
+      },
+      checkAllActive: countActive >= countKeys
+    })
+    return newState
+  }, 
+
+  setPopulation: (pop) => (state) => {
+    const allKeys = Object.keys(state.activeSpeciesInfos)
+    const countKeys = allKeys.length
+    const countActive = allKeys.reduce((acc, n) => state.activeSpeciesInfos[n].state ? acc + 1 : acc + 0, 0) + 1 // Count the number of loaded parts in the species Component
+
+    const newState = ({
+      ...state,
+      activeSpeciesInfos: {
+        ...state.activeSpeciesInfos,
+        populationTrend: {val: pop.populationTrend[0].populationTrend ? pop.populationTrend[0].populationTrend : 'Unknown', state: true}
+      },
+      checkAllActive: countActive >= countKeys
+    })
+    return newState
+  },
+
+  setNameInfo: (infos) => (state) => {
+    const allKeys = Object.keys(state.activeSpeciesInfos)
+    const countKeys = allKeys.length
+    const countActive = allKeys.reduce((acc, n) => state.activeSpeciesInfos[n].state ? acc + 1 : acc + 0, 0) + 2 // Count the number of loaded parts in the species Component
+
+    const newState = ({
+      ...state,
+      activeSpeciesInfos: {
+        ...state.activeSpeciesInfos,
+        commonName: {val: infos.res.reduce((acc, n) => [...acc, {name: n.name, main: n.main}], []), state: true},
+        scientificName: {val: infos.res[0] ? infos.res[0].scientificName : 'Unknown', state: true}
+      },
+      checkAllActive: countActive >= countKeys
+    })
+    return newState
+  }, 
+
+  resetActiveSpecies: () => (state) => {
+    return ({
+      ...state,
+      activeSpeciesInfos: {
+        id: {val: -1, state: false},
+        commonName: {val: [], state: false},
+        scientificName: {val: '', state: false},
+        threats: {val: [], state: false},
+        habitats: {val: [], state: false},
+        measures: {val: [], state: false},
+        populationTrend: {val: '', state: false}
+      },
+      activeSpecies: false,
+      checkAllActive: false
     })
   }
   /*
