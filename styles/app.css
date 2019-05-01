@@ -136,3 +136,13 @@ h1, h2, h3{
   width: 200px;
   height: 200px;
 }
+
+#classNameList img {
+  width: 45px;
+  height: 45px;
+  box-shadow:0.5px 0.5px 0.5px 0.5px #595656;
+  margin-right:25px;
+  margin-left:25px;
+  border-radius:2px;
+  justify-content: center;
+}

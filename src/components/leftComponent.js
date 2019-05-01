@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import {category} from '../wrapper/category'
+import {className} from '../wrapper/className'
 
 /*
   Component that display the left panel
@@ -28,11 +29,30 @@ export default (props) =>
         })
       )
     }
+    {
+      !props.data.classNames && (
+        className().list().then((resolvedValue) => {
+          props.data.setClassNames(resolvedValue)
+        }, (error) => {
+          props.data.setErrorMess(error)
+        })
+      )
+    }
     <div id='categoryList'>
       {
         props.data.categoryList && (
           props.data.categoryList.map(res => {
             return <p className={res.state ? 'category active' : 'category'} onclick = {() => props.data.toggleCategory(res.name)}><span className='displayed'>{res.name}</span><span className='notDisplayed'>{eq[res.name]}</span></p>
+          })
+        )
+      }
+    </div>
+    <div id='classNameList'>
+      {
+        props.data.classNames && props.data.classNames.length > 0 && (
+          props.data.classNames.map(res => {
+            console.log(res.name)
+            return <img src = {'../../assets/' + res.name + '.png'} onclick = {() => props.data.toggleCompGroup(res.name)}/>
           })
         )
       }

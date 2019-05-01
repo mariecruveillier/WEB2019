@@ -25,7 +25,7 @@ export default (props) =>
           datasets: [{
             label: ['Nombre d\'espèce par pays'],
             data: props.data.countryList.map(x => x.count),
-            fill : true,
+            fill: true,
             backgroundColor: randomColor(props.data.countryList.length)
           }]
         }
