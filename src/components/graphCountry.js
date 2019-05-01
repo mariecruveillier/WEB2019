@@ -1,6 +1,5 @@
 import { h } from 'hyperapp'
 import Chart from 'chart.js'
-import {country} from '../wrapper/country'
 
 const speedCanvas = document.getElementById('mainGraphs')
 
