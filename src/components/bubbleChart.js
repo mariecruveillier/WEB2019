@@ -6,4 +6,5 @@ import Chart from 'chart.js'
 */
 
 export default (props) =>
-  <div></div>
+  <div className='wrapperGraph'>
+  </div>

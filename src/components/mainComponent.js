@@ -20,8 +20,8 @@ export default (props) =>
     <div id='mainViewer'>
       <section id='mainGraphs'>
         <CountryChart data={{countryList: props.data.countryList, setErrorMess: props.data.setErrorMess}}/>
-        <BubbleChart />
         <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
+        <BubbleChart />
       </section>
       <section id='searchContainer'>
         <input id='searchBar' type="text" placeholder='Research...'

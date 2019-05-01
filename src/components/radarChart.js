@@ -5,9 +5,6 @@ import Chart from 'chart.js'
   Component that display a Radar Graph to show the different category
 */
 
-const randomScalingFactor = () => {
-  return Math.round(Math.random() * 100)
-}
 export default (props) =>
   <div className='wrapperGraph'>
     {props.data.classNames && props.data.classNames.length > 0 && (
