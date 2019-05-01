@@ -6,7 +6,7 @@ import Chart from 'chart.js'
 */
 
 export default (props) =>
-  <div>
+  <div className='wrapperGraph'>
     {props.data.countryList && (
       <canvas className='wrapperGraph' id='bubble-chart'
         oncreate={(element) => {
