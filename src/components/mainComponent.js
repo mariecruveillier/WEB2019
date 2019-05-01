@@ -15,7 +15,9 @@ export default (props) =>
       setCategory: props.data.setCategory,
       categoryList: props.data.categoryList,
       setErrorMess: props.data.setErrorMess,
-      toggleCategory: props.data.toggleCategory
+      toggleCategory: props.data.toggleCategory,
+      toggleCompGroup: props.data.toggleCompGroup,
+      classNames: props.data.classNames
     }} />
     <div id='mainViewer'>
       <section id='mainGraphs'>
