@@ -8,7 +8,7 @@ import Chart from 'chart.js'
 export default (props) =>
   <div className='wrapperGraph'>
     {props.data.regionList && (
-      <canvas className='wrapperGraph' id='bubble-chart'
+      <canvas className='wrapperGraph' id='bubble-chart' width='400' height='400' style='background-image: url(../../assets/worldMap.png); background-size: contain; background-repeat: no-repeat; background-position: 25% 25%'
         oncreate={(element) => {
           let ctx = element.getContext('2d')
 
@@ -23,9 +23,9 @@ export default (props) =>
                 backgroundColor: 'rgba(60,186,0,0.2)',
                 borderColor: 'rgba(60,186,0,1)',
                 data: [{
-                  x: -5,
-                  y: 0.0,
-                  r: props.data.regionList[10].count / 500
+                  x: -4,
+                  y: 2.5,
+                  r: 1 + props.data.regionList[10].count / 500
                 }]
               },
               {
@@ -37,9 +37,9 @@ export default (props) =>
                 backgroundColor: 'rgba(60,186,159,0.2)',
                 borderColor: 'rgba(60,186,159,1)',
                 data: [{
-                  x: 0,
-                  y: 5,
-                  r: props.data.regionList[3].count / 500
+                  x: 0.8,
+                  y: 5.7,
+                  r: 1 + props.data.regionList[3].count / 500
                 }]
               },
               {
@@ -52,8 +52,8 @@ export default (props) =>
                 borderColor: 'rgba(200,0,0,1)',
                 data: [{
                   x: 0.5,
-                  y: 0.0,
-                  r: props.data.regionList[5].count / 500
+                  y: 3.7,
+                  r: 1 + props.data.regionList[5].count / 500
                 }]
               },
               {
@@ -65,13 +65,13 @@ export default (props) =>
                 backgroundColor: 'rgba(255,221,50,0.2)',
                 borderColor: 'rgba(255,221,50,1)',
                 data: [{
-                  x: 0,
-                  y: -7,
-                  r: props.data.regionList[9].count / 500
+                  x: 0.7,
+                  y: 2,
+                  r: 1 + props.data.regionList[9].count / 500
                 }]
               },
               {
-                // La pan-Afrique soit quasiment toute l'afrique
+                // Le golf persique
                 label: [
                   props.data.regionList[1].name,
                   props.data.regionList[1].count
@@ -80,8 +80,8 @@ export default (props) =>
                 borderColor: 'rgba(180,120,180,1)',
                 data: [{
                   x: 3,
-                  y: -5,
-                  r: props.data.regionList[1].count / 500
+                  y: 2.4,
+                  r: 1 + props.data.regionList[1].count / 500
                 }]
               }
             ]
@@ -107,7 +107,7 @@ export default (props) =>
                 label: (t, d) => d.datasets[t.datasetIndex].label
               }
               // placement: 'node:center'
-            }, 
+            },
             /* hover: {
               mode: 'label'
             }, */
