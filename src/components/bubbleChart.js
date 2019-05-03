@@ -7,67 +7,81 @@ import Chart from 'chart.js'
 
 export default (props) =>
   <div className='wrapperGraph'>
-    {props.data.countryList && (
+    {props.data.regionList && (
       <canvas className='wrapperGraph' id='bubble-chart'
         oncreate={(element) => {
           let ctx = element.getContext('2d')
 
           const bubbleData = {
             datasets: [
+              // Le golf du mexique
               {
                 label: [
-                  'Africa',
-                  100
-                ],
-                backgroundColor: 'rgba(255,221,50,0.2)',
-                borderColor: 'rgba(255,221,50,1)',
-                data: [{
-                  name: 'Africa',
-                  x: 0,
-                  y: -4,
-                  r: 15
-                }]
-              },
-              {
-                label: [
-                  'Europe',
-                  100
-                ],
-                backgroundColor: 'rgba(60,186,159,0.2)',
-                borderColor: 'rgba(60,186,159,1)',
-                data: [{
-                  name: 'Europe',
-                  x: 0,
-                  y: 2,
-                  r: 13
-                }]
-              },
-              {
-                label: [
-                  'Asia',
-                  100
-                ],
-                backgroundColor: 'rgba(200,0,0,0.2)',
-                borderColor: 'rgba(200,0,0,1)',
-                data: [{
-                  name: 'Asia',
-                  x: 7,
-                  y: 0.0,
-                  r: 17
-                }]
-              },
-              {
-                label: [
-                  'America',
-                  100
+                  props.data.regionList[10].name,
+                  props.data.regionList[10].count
                 ],
                 backgroundColor: 'rgba(60,186,0,0.2)',
                 borderColor: 'rgba(60,186,0,1)',
                 data: [{
-                  name: 'America',
                   x: -5,
                   y: 0.0,
-                  r: 20
+                  r: props.data.regionList[10].count / 500
+                }]
+              },
+              {
+                // L'europe
+                label: [
+                  props.data.regionList[3].name,
+                  props.data.regionList[3].count
+                ],
+                backgroundColor: 'rgba(60,186,159,0.2)',
+                borderColor: 'rgba(60,186,159,1)',
+                data: [{
+                  x: 0,
+                  y: 5,
+                  r: props.data.regionList[3].count / 500
+                }]
+              },
+              {
+                // La mer mediteranee
+                label: [
+                  props.data.regionList[5].name,
+                  props.data.regionList[5].count
+                ],
+                backgroundColor: 'rgba(200,0,0,0.2)',
+                borderColor: 'rgba(200,0,0,1)',
+                data: [{
+                  x: 0.5,
+                  y: 0.0,
+                  r: props.data.regionList[5].count / 500
+                }]
+              },
+              {
+                // La pan-Afrique soit quasiment toute l'afrique
+                label: [
+                  props.data.regionList[9].name,
+                  props.data.regionList[9].count
+                ],
+                backgroundColor: 'rgba(255,221,50,0.2)',
+                borderColor: 'rgba(255,221,50,1)',
+                data: [{
+                  x: 0,
+                  y: -7,
+                  r: props.data.regionList[9].count / 500
+                }]
+              },
+              {
+                // La pan-Afrique soit quasiment toute l'afrique
+                label: [
+                  props.data.regionList[1].name,
+                  props.data.regionList[1].count
+                ],
+                backgroundColor: 'rgba(180,120,180,0.2)',
+                borderColor: 'rgba(180,120,180,1)',
+                data: [{
+                  x: 3,
+                  y: -5,
+                  r: props.data.regionList[1].count / 500
                 }]
               }
             ]
@@ -90,7 +104,7 @@ export default (props) =>
               enabled: true,
               displayColors: false,
               callbacks: {
-                label: (t, d) => d.datasets[t.datasetIndex].label[0]
+                label: (t, d) => d.datasets[t.datasetIndex].label
               }
               // placement: 'node:center'
             }, 

@@ -26,6 +26,15 @@ export default (state, actions) =>
       )
     }
     {
+      state.country.length === 0 && (
+        Wrapper.Region.all().then((resolvedValue) => {
+          actions.setRegion(resolvedValue)
+        }, (error) => {
+          actions.setErrorMess(error)
+        })
+      )
+    }
+    {
       !state.activeSpeciesInfos.threats.state && state.activeSpeciesInfos.id.val !== -1 && (
         // Load Threat
         Wrapper.Threat.fetch({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
@@ -79,6 +88,7 @@ export default (state, actions) =>
     <MainComponent data={{
       classNames: state.classNames,
       countryList: state.country,
+      regionList: state.region,
       resultList: state.resultList,
       setErrorMess: actions.setErrorMess,
       setResult: actions.setResult,

@@ -94,6 +94,13 @@ export default {
     })
   },
 
+  setRegion: (data) => (state) => {
+    return ({
+      ...state,
+      region: data.regionList.reduce((acc, n) => [...acc, {name: n.regionName, count: n.count}], [])
+    })
+  },
+
   setActiveSpecies: (id) => (state) => {
     const newState = ({
       ...state,

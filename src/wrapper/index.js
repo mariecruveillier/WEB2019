@@ -8,9 +8,9 @@ import {compGroup} from './comprehensiveGroups'
 import {className} from './className'
 
 const Country = country()
+const Region = region()
 const Habitat = habitat()
 const Measure = measure()
-const Region = region()
 const Species = species()
 const Threat = threat()
 const CompGroup = compGroup()
@@ -18,9 +18,9 @@ const ClassName = className()
 
 export default {
   Country,
+  Region,
   Habitat,
   Measure,
-  Region,
   Species,
   Threat,
   CompGroup,

@@ -11,7 +11,7 @@ const region = () => {
         resolve,
         reject,
         handleResult,
-        0
+        1
       )
     })
   }
