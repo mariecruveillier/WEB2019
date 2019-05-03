@@ -97,6 +97,7 @@ export default (state, actions) =>
       setCountry: actions.setCountry,
       toggleCategory: actions.toggleCategory,
       toggleCompGroup: actions.toggleCompGroup,
+      toggleCountry: actions.toggleCountry,
       categoryList: state.categoryList,
       setResearchData: actions.setResearchData,
       resultUpdated: state.researchData.updated,

@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import Chart from 'chart.js'
+import {country} from '../wrapper/country'
 
 const randomColor = function (number) {
   const tab = ['']
@@ -17,18 +18,20 @@ const randomColor = function (number) {
 export default (props) =>
   <div className='wrapperGraph'>
     {props.data.countryList && props.data.countryList.length > 0 && (
-      <canvas className='mainChart' width='400' height='400' oncreate={(element) => {
+      <canvas className='mainChart' id='searchByCountry' width='400' height='400' oncreate={(element) => {
         let ctx = element.getContext('2d')
         const datas = {
           labels: props.data.countryList.map(x => x.name),
           datasets: [{
-            label: ['Nombre d\'espèce par pays'],
+            label: ['number of species by country'],
             data: props.data.countryList.map(x => x.count),
             fill: true,
             backgroundColor: randomColor(props.data.countryList.length)
           }]
         }
+
         const chartOptions = {
+          // onClick: display(),
           scales: {
             xAxes: [{
               gridLines: {
@@ -54,11 +57,18 @@ export default (props) =>
             }]
           }
         }
+
         const lineChart = new Chart(ctx, {
           type: 'bar',
           data: datas,
           options: chartOptions
         })
+
+        document.getElementById('searchByCountry').onclick = function (evt) {
+          const activePoints = lineChart.getElementsAtEvent(evt)
+          const label = datas.labels[activePoints[0]._index]
+          props.data.toggleCountry(label)
+        }
       }} />
     )}
   </div>
