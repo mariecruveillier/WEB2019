@@ -2,6 +2,7 @@ import { h } from 'hyperapp'
 
 export default (props) =>
   <div id='speciesDetail' className={(props.data.id !== -1 /* && props.data.allActive */) ? 'active' : ''}>
+
     {props.data.id !== -1 && (
       <div>
         <div id='leaveIcon'>
@@ -63,6 +64,7 @@ export default (props) =>
             </ul>
           </div>
         </section>
+
         <section id='graphicsSpecies' className='speciesBloc'>
           <div class='specieBox'>
             <h3>SINCE ...</h3>
