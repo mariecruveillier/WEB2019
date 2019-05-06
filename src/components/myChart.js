@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import Chart from 'chart.js'
+
 export default (props) =>
   <canvas oncreate={(element) => {
     let ctx = element.getContext('2d')

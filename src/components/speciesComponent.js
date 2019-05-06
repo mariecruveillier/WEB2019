@@ -1,4 +1,6 @@
 import { h } from 'hyperapp'
+import { species } from '../wrapper/species'
+import HistoricGraph from './historicGraph'
 
 export default (props) =>
   <div id='speciesDetail' className={(props.data.id !== -1 /* && props.data.allActive */) ? 'active' : ''}>
@@ -78,11 +80,11 @@ export default (props) =>
             <h3>POPULATION</h3>
           </div>
           <div class='specieBox'>
+            <HistoricGraph data={{}} />
             <h3>CATEGORY</h3>
           </div>
         </section>
-        <section id='countryList'> 
-
+        <section id='countryList'>
         </section>
       </div>
     )}

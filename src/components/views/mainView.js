@@ -44,7 +44,7 @@ export default (state, actions) =>
         })
       )
     }
-    
+
     {
       !state.activeSpeciesInfos.habitats.state && state.activeSpeciesInfos.id.val !== -1 && (
         // Load Habitat
@@ -85,6 +85,16 @@ export default (state, actions) =>
         })
       )
     }
+    {
+      !state.activeSpeciesInfos.historical.state && state.activeSpeciesInfos.id.val !== -1 && (
+        // Load Measure ICICICICICCICI
+        Wrapper.Species.historical({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
+          actions.setHistorical(resolvedValue)
+        }, (error) => {
+          actions.setErrorMess(error)
+        })
+      )
+    }
     <MainComponent data={{
       classNames: state.classNames,
       countryList: state.country,
@@ -110,7 +120,7 @@ export default (state, actions) =>
       },
       setActive: actions.setActiveSpecies
     }}/>
-    
+
     {!state.checkAllActive && state.activeSpeciesInfos.id.val !== -1 && (
       <div id='loader'>
         <img src='https://i.pinimg.com/originals/12/6c/a6/126ca6bcc2616e4edf09f466e9925396.gif' alt='loader' />
@@ -123,5 +133,4 @@ export default (state, actions) =>
       resetAll: actions.resetActiveSpecies,
       allActive: state.checkAllActive
     }} />
-    
   </div>
