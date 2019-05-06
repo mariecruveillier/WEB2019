@@ -214,10 +214,9 @@ export default {
 
   // toggle (if it's false -> true, if it's true -> false) comprehensiveGroup that have been clicked
   toggleCompGroup: (name) => (state) => {
-    console.log(name)
     const id = state.classNames.indexOf(state.classNames.find(el => el.name === name))
     const arr = state.classNames.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
-    if (state.categoryList[id].state) {
+    if (state.classNames[id].state) {
       return ({
         ...state,
         researchData: {
@@ -225,7 +224,7 @@ export default {
           className: '',
           updated: false
         },
-        classNames: [...arr.slice(0, id), {name: name, state: !state.categoryList[id].state}, ...arr.slice(id + 1, arr.length)]
+        classNames: [...arr.slice(0, id), {name: name, state: !state.classNames[id].state}, ...arr.slice(id + 1, arr.length)]
       })
     } else {
       return ({
@@ -236,6 +235,33 @@ export default {
           updated: false
         },
         classNames: [...arr.slice(0, id), {name: name, state: !state.classNames[id].state}, ...arr.slice(id + 1, arr.length)]
+      })
+    }
+  },
+
+  toggleCountry: (name) => (state) => {
+    console.log(name)
+    const id = state.classNames.indexOf(state.country.find(el => el.name === name))
+    const arr = state.country.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
+    if (state.country.state) {
+      return ({
+        ...state,
+        researchData: {
+          ...state.researchData,
+          country: name,
+          updated: false
+        },
+        country: [...arr.slice(0, id), {name: name, state: !state.country.state}, ...arr.slice(id + 1, arr.length)]
+      })
+    } else {
+      return ({
+        ...state,
+        researchData: {
+          ...state.researchData,
+          country: name,
+          updated: false
+        },
+        country: [...arr.slice(0, id), {name: name, state: !state.country.state}, ...arr.slice(id + 1, arr.length)]
       })
     }
   }
