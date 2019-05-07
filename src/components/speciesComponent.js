@@ -78,7 +78,7 @@ export default (props) =>
             <h3>POPULATION</h3>
           </div>
           <div class='specieBox'>
-            <HistoricGraph data={{}} />
+            <HistoricGraph data={{historical: props.data.detailSpecies.historical}} />
             <h3>CATEGORY</h3>
           </div>
         </section>

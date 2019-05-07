@@ -24,6 +24,8 @@ export default (props) =>
           }]
         }
 
+        console.log(props.data.historical.val)
+
         const yLabels = {
           0: 'LC', 1: 'NT', 2: 'VU', 3: 'EN', 4: 'CR', 5: 'EW', 6: 'EX'
         }

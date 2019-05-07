@@ -174,7 +174,7 @@ export default {
       ...state,
       activeSpeciesInfos: {
         ...state.activeSpeciesInfos,
-        historical: {state: true}
+        historical: {val: historical.result, state: true}
       },
       checkAllActive: countActive >= countKeys
     })

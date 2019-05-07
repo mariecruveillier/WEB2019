@@ -201,7 +201,6 @@ const species = () => {
     }),
 
     historical: (options) => new Promise((resolve, reject) => {
-      console.log('getting historical data')
       if (!options.hasOwnProperty('name') && !options.hasOwnProperty('id')) {
         return reject(new Error('You must provide either a name or an id'))
       }
@@ -215,7 +214,6 @@ const species = () => {
           ? `/species/history/id/${options.id}`
           : `/species/history/name/${options.name}`
       }
-      console.log('end Historical')
       return sendRequest(
         endpoint,
         resolve,
