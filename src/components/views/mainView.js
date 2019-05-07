@@ -6,7 +6,7 @@ import SpeciesComponent from '../speciesComponent'
 import Wrapper from '../../wrapper/index'
 
 export default (state, actions) =>
-  <div>
+  <div id='mainContainer'>
     {
       state.classNames.length === 0 && (
         Wrapper.ClassName.list({limit: 8}).then((resolvedValue) => {

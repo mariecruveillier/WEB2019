@@ -42,7 +42,7 @@ export default (props) =>
       {
         props.data.categoryList && (
           props.data.categoryList.map(res => {
-            return <p className={res.state ? 'category active' : 'category'} onclick = {() => props.data.toggleCategory(res.name)}><span className='displayed'>{res.name}</span><span className='notDisplayed'>{eq[res.name]}</span></p>
+            return <p className={res.state ? 'category bold' : 'category'} onclick = {() => props.data.toggleCategory(res.name)}>{res.name}</p>
           })
         )
       }
