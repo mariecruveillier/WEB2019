@@ -17,7 +17,7 @@ export default {
         ...state.researchData,
         updated: true
       },
-      resultList: data.list.reduce((acc, n) => [...acc, {name: n.name, id: n.internalTaxonId}], [])
+      resultList: data.list.reduce((acc, n) => [...acc, {name: (data.from ? n.scientific_name : n.name), id: (data.from ? n.taxonid : n.internalTaxonId)}], [])
     })
     return newState
   },
@@ -89,7 +89,7 @@ export default {
   setCountry: (data) => (state) => {
     return ({
       ...state,
-      country: data.countryList.reduce((acc, n) => [...acc, {name: n.countryName, count: n.count}], []).slice(1, 20)
+      country: data.countryList.reduce((acc, n) => [...acc, {name: n.countryName, countryCode: n.countryCode, count: n.count}], []).slice(1, 20)
     })
   },
 
@@ -261,7 +261,7 @@ export default {
       ...state,
       researchData: {
         ...state.researchData,
-        country: name,
+        country: state.country.find(c => c.name === name).countryCode,
         updated: false
       }
     })

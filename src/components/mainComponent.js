@@ -41,7 +41,7 @@ export default (props) =>
             !props.data.resultUpdated && props.data.researchData.country !== '' && (
               country().species({country: props.data.researchData.country}).then((resolvedValue) => {
                 console.log(resolvedValue)
-                props.data.setResult(resolvedValue)
+                props.data.setResult({list: resolvedValue.result.slice(0, 8), from: 'redlist'})
               }, (error) => {
                 props.data.setErrorMess(error)
               })

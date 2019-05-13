@@ -68,7 +68,7 @@ export default (props) =>
           const activePoints = lineChart.getElementsAtEvent(evt)
           if (activePoints.length > 0) {
             const label = datas.labels[activePoints[0]._index] // TODO GERER ERREUR
-            console.log(label)
+            // console.log(props.data.countryList.find(c => c.name === label))
             props.data.countryList && props.data.countryList.length > 0 && (
               props.data.toggleCountry(label)
             )

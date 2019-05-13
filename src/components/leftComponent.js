@@ -39,7 +39,6 @@ export default (props) =>
       {
         props.data.classNames && props.data.classNames.length > 0 && (
           props.data.classNames.map(res => {
-            console.log(res)
             return <img src = {'../../assets/' + res.name + '.png'} className={res.state ? 'activeClassName' : ''} onclick = {() => props.data.toggleCompGroup(res.name)}/>
           })
         )
