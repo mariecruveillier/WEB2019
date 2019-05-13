@@ -12,6 +12,8 @@ body{
 }
 h1, h2, h3{
   font-family: 'Fjalla One', sans-serif;
+  margin: 0;
+  padding: 15px;
 }
 .bold{
   font-weight: bold;
