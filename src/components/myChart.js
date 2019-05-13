@@ -1,4 +1,4 @@
-import { h } from 'hyperapp'
+mport { h } from 'hyperapp'
 import Chart from 'chart.js'
 
 export default (props) =>

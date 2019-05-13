@@ -66,8 +66,13 @@ export default (props) =>
 
         document.getElementById('searchByCountry').onclick = function (evt) {
           const activePoints = lineChart.getElementsAtEvent(evt)
-          const label = datas.labels[activePoints[0]._index]
-          props.data.toggleCountry(label)
+          if (activePoints.length > 0) {
+            const label = datas.labels[activePoints[0]._index] // TODO GERER ERREUR
+            console.log(label)
+            props.data.countryList && props.data.countryList.length > 0 && (
+              props.data.toggleCountry(label)
+            )
+          }
         }
       }} />
     )}

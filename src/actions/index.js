@@ -257,31 +257,14 @@ export default {
       })
     }
   },
-
   toggleCountry: (name) => (state) => {
-    const id = state.classNames.indexOf(state.country.find(el => el.name === name))
-    const arr = state.country.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
-    if (state.country.state) {
-      return ({
-        ...state,
-        researchData: {
-          ...state.researchData,
-          country: name,
-          updated: false
-        },
-        country: [...arr.slice(0, id), {name: name, state: !state.country.state}, ...arr.slice(id + 1, arr.length)]
-      })
-    } else {
-      return ({
-        ...state,
-        researchData: {
-          ...state.researchData,
-          country: name,
-          updated: false
-        },
-        country: [...arr.slice(0, id), {name: name, state: !state.country.state}, ...arr.slice(id + 1, arr.length)]
-      })
-    }
+    return ({
+      ...state,
+      researchData: {
+        ...state.researchData,
+        country: name,
+        updated: false
+      }
+    })
   }
-
 }

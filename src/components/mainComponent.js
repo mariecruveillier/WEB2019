@@ -4,6 +4,7 @@ import BubbleChart from './bubbleChart'
 import LeftComponent from './leftComponent'
 import CountryChart from './graphCountry'
 import { species } from '../wrapper/species'
+import { country } from '../wrapper/country'
 
 /*
   Component that display the main page of the dashboard
@@ -37,7 +38,17 @@ export default (props) =>
         </section>
         <section id='result'>
           {
-            !props.data.resultUpdated && (
+            !props.data.resultUpdated && props.data.researchData.country !== '' && (
+              country().species({country: props.data.researchData.country}).then((resolvedValue) => {
+                console.log(resolvedValue)
+                props.data.setResult(resolvedValue)
+              }, (error) => {
+                props.data.setErrorMess(error)
+              })
+            )
+          }
+          {
+            !props.data.resultUpdated && props.data.researchData.country === '' && (
               species().search(props.data.researchData).then((resolvedValue) => {
                 props.data.setResult(resolvedValue)
               }, (error) => {
