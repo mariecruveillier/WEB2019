@@ -143,3 +143,22 @@ h1, h2, h3{
   border-radius:2px;
   justify-content: center;
 }
+
+.speciesInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.speciesBloc{
+  display: flex;
+  flex-direction: row;
+  justify-content:  space-around;
+  flex-wrap: wrap;
+  height: 50%;
+}
+
+.specieBox{
+  width: 350px;
+}

@@ -13,6 +13,8 @@ export default (props) =>
           const historicData = {
             labels: props.data.historical.val.map(x => parseInt(x.year)).reduce((acc, n) => [n, ...acc], []),
             datasets: [{
+              borderColor: 'rgba(0,204,255,1)',
+              backgroundColor: 'rgba(0,204,255,0.4)',
               data: props.data.historical.val.map(e => { return {x: parseInt(e.year), y: yLabels.indexOf(e.category)} })
             }]
           }
@@ -21,6 +23,9 @@ export default (props) =>
           // console.log(yLabels)
 
           const historicOptions = {
+            legend: {
+              display: false
+            },
             fill: true,
             scales: {
               scaleLabel: {
@@ -31,6 +36,9 @@ export default (props) =>
                   callback: (value) => yLabels[value]
                 }
               }]
+            },
+            tooltips: {
+              enabled: false
             }
           }
 
