@@ -17,6 +17,7 @@ export default {
     input: '',
     className: '',
     category: '',
+    country: '',
     updated: true
   }
 }
