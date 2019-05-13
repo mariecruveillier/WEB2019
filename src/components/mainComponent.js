@@ -22,7 +22,7 @@ export default (props) =>
     }} />
     <div id='mainViewer'>
       <div>
-        <h1>CECI EST UN TITRE</h1>
+        <h1>Animalia</h1>
         <section id='searchContainer'>
           <input id='searchBar' type="text" placeholder='Research...'
             onkeyup = {(e) => {

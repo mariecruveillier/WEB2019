@@ -57,7 +57,6 @@ const species = () => {
         0
       )
     }),
-    /* ICICICICICICICIICCI RECHEHRHEHFHE */
     search: (options) => new Promise((resolve, reject) => {
       let endpoint = `/species/search/${options.entry === '' ? null : options.entry}/class/${options.className === '' ? null : options.className}/category/${options.category === '' ? null : options.category}/limit/${options.limit}`
       return sendRequest(

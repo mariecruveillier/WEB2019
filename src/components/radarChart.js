@@ -5,6 +5,17 @@ import Chart from 'chart.js'
   Component that display a Radar Graph to show the different category
 */
 
+const eq = {
+  'ACTINOPTERYGII': 'Fishes',
+  'AVES': 'Birds',
+  'INSECTA': 'Insects',
+  'REPTILIA': 'Reptiles',
+  'GASTROPODA': 'Gastropods',
+  'AMPHIBIA': 'Amphibia',
+  'MAMMALIA': 'Mammals',
+  'MALACOSTRACA': 'Crustaceans'
+}
+
 export default (props) =>
   <div className='wrapperGraph'>
     {props.data.classNames && props.data.classNames.length > 0 && (
@@ -14,11 +25,11 @@ export default (props) =>
         let chart = new Chart(ctx, {
           type: 'radar',
           data: {
-            labels: cpyArr.map(x => x.name),
+            labels: cpyArr.map(x => eq[x.name]),
             datasets: [{
               label: 'Differents class of species',
-              backgroundColor: 'rgba(255, 255, 255, 0.4)',
-              borderColor: 'rgba(255, 0, 0, 1.0)',
+              backgroundColor: 'rgba(0, 0, 0, 0.4)',
+              borderColor: 'rgba(0, 0, 0, 1.0)',
               pointBackgroundColor: 'rgba(255, 255, 255, 1)',
               data: cpyArr.map(x => x.count),
               pointRadius: 10,

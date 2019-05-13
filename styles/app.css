@@ -143,3 +143,6 @@ h1, h2, h3{
   border-radius:2px;
   justify-content: center;
 }
+.activeClassName{
+  border: 2px solid #fff;
+}
