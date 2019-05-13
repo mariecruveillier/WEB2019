@@ -6,18 +6,6 @@ import {className} from '../wrapper/className'
   Component that display the left panel
 */
 
-const eq = {
-  'Critically Endangered': 'CR',
-  'Data Deficient': 'DD',
-  'Endangered': 'EN',
-  'Extinct': 'EX',
-  'Extinct in the Wild': 'EW',
-  'Least Concern': 'LC',
-  'Near Threatened': 'NT',
-  'Not Evaluated': 'NE',
-  'Vulnerable': 'VU'
-}
-
 export default (props) =>
   <section id='leftPanel'>
     {
@@ -51,8 +39,7 @@ export default (props) =>
       {
         props.data.classNames && props.data.classNames.length > 0 && (
           props.data.classNames.map(res => {
-            // console.log(res.name)
-            return <img src = {'../../assets/' + res.name + '.png'} onclick = {() => props.data.toggleCompGroup(res.name)}/>
+            return <img src = {'../../assets/' + res.name + '.png'} className={res.state ? 'activeClassName' : ''} onclick = {() => props.data.toggleCompGroup(res.name)}/>
           })
         )
       }

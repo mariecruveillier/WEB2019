@@ -1,6 +1,5 @@
 import { h } from 'hyperapp'
 /* import entryList from '../entryList' */
-import MyChart from '../myChart'
 import MainComponent from '../mainComponent'
 import SpeciesComponent from '../speciesComponent'
 import Wrapper from '../../wrapper/index'

@@ -5,7 +5,7 @@ export default {
   setClassNames: (data) => (state) => {
     return ({
       ...state,
-      classNames: data.list.reduce((acc, n) => [...acc, {name: n.className, count: n.count}], [])
+      classNames: data.list.reduce((acc, n) => [...acc, {name: n.className, count: n.count, state: false}], [])
     })
   },
 
@@ -17,7 +17,7 @@ export default {
         ...state.researchData,
         updated: true
       },
-      resultList: data.list.reduce((acc, n) => [...acc, {name: n.name, id: n.internalTaxonId}], [])
+      resultList: data.list.reduce((acc, n) => [...acc, {name: (data.from ? n.scientific_name : n.name), id: (data.from ? n.taxonid : n.internalTaxonId)}], [])
     })
     return newState
   },
@@ -56,7 +56,6 @@ export default {
 
   // toggle (if it's false -> true, if it's true -> false) category that have been clicked
   toggleCategory: (name) => (state) => {
-    console.log(name)
     const id = state.categoryList.indexOf(state.categoryList.find(el => el.name === name))
     const arr = state.categoryList.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
     if (state.categoryList[id].state) {
@@ -90,7 +89,7 @@ export default {
   setCountry: (data) => (state) => {
     return ({
       ...state,
-      country: data.countryList.reduce((acc, n) => [...acc, {name: n.countryName, count: n.count}], [])
+      country: data.countryList.reduce((acc, n) => [...acc, {name: n.countryName, countryCode: n.countryCode, count: n.count}], []).slice(1, 20)
     })
   },
 
@@ -243,7 +242,7 @@ export default {
           className: '',
           updated: false
         },
-        classNames: [...arr.slice(0, id), {name: name, state: !state.classNames[id].state}, ...arr.slice(id + 1, arr.length)]
+        classNames: [...arr.slice(0, id), {name: name, count: state.classNames[id].count, state: !state.classNames[id].state}, ...arr.slice(id + 1, arr.length)]
       })
     } else {
       return ({
@@ -253,36 +252,18 @@ export default {
           className: name,
           updated: false
         },
-        classNames: [...arr.slice(0, id), {name: name, state: !state.classNames[id].state}, ...arr.slice(id + 1, arr.length)]
+        classNames: [...arr.slice(0, id), {name: name, count: state.classNames[id].count, state: !state.classNames[id].state}, ...arr.slice(id + 1, arr.length)]
       })
     }
   },
-
   toggleCountry: (name) => (state) => {
-    console.log(name)
-    const id = state.classNames.indexOf(state.country.find(el => el.name === name))
-    const arr = state.country.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
-    if (state.country.state) {
-      return ({
-        ...state,
-        researchData: {
-          ...state.researchData,
-          country: name,
-          updated: false
-        },
-        country: [...arr.slice(0, id), {name: name, state: !state.country.state}, ...arr.slice(id + 1, arr.length)]
-      })
-    } else {
-      return ({
-        ...state,
-        researchData: {
-          ...state.researchData,
-          country: name,
-          updated: false
-        },
-        country: [...arr.slice(0, id), {name: name, state: !state.country.state}, ...arr.slice(id + 1, arr.length)]
-      })
-    }
+    return ({
+      ...state,
+      researchData: {
+        ...state.researchData,
+        country: state.country.find(c => c.name === name).countryCode,
+        updated: false
+      }
+    })
   }
-
 }
