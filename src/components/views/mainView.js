@@ -86,7 +86,6 @@ export default (state, actions) =>
     }
     {
       !state.activeSpeciesInfos.historical.state && state.activeSpeciesInfos.id.val !== -1 && (
-        // Load Measure ICICICICICCICI
         Wrapper.Species.historical({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
           actions.setHistorical(resolvedValue)
         }, (error) => {

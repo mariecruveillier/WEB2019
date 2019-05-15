@@ -223,7 +223,8 @@ export default {
         threats: {val: [], state: false},
         habitats: {val: [], state: false},
         measures: {val: [], state: false},
-        populationTrend: {val: '', state: false}
+        populationTrend: {val: '', state: false},
+        historical: {val: '', state: false}
       },
       activeSpecies: false,
       checkAllActive: false

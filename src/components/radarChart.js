@@ -38,17 +38,25 @@ export default (props) =>
           },
           options: {
             legend: {
+              display: false,
               position: 'top'
             },
             responsive: true,
-            aspectRatio: 1, /*
+            aspectRatio: 1, 
             title: {
               display: true,
-              text: 'Chart.js Radar Chart'
-            }, */
+              text: 'Species by Category'
+            }, 
             scale: {
               ticks: {
                 beginAtZero: true
+              }
+            },
+            tooltips: {
+              enabled: true,
+              displayColors: false,
+              callbacks: {
+                label: (t, d) => d.datasets[t.datasetIndex].label
               }
             }
           }
