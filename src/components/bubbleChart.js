@@ -8,7 +8,7 @@ import Chart from 'chart.js'
 export default (props) =>
   <div className='wrapperGraph'>
     {props.data.regionList && (
-      <canvas className='wrapperGraph' id='bubble-chart' width='400' height='400' style='background-image: url(../../assets/worldMap.png); background-size: contain; background-repeat: no-repeat; background-position: 25% 25%'
+      <canvas className='wrapperGraph' id='bubble-chart' width='400' height='400' style='background-image: url(../../assets/worldMap.png); background-size: contain; background-repeat: no-repeat; background-position: 25% 25%; border-right : 1px solid #AAA; border-left : 1px solid #AAA;'
         oncreate={(element) => {
           let ctx = element.getContext('2d')
 

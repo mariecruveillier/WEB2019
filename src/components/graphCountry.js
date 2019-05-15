@@ -6,7 +6,8 @@ const randomColor = function (number) {
   const tab = ['']
   const addColor = function (number, tab) {
     if (number > 1) {
-      const tableau = [...tab, '#' + (Math.random() * 0xFFFFFF << 0).toString(16)]
+      const tableau = [...tab, '#60A' + (Math.random() * 0xFFF << 0).toString(16)]
+      // const tableau = [...tab, '#' + Math.floor(Math.random() * 16777215).toString(16)]
       return addColor(number - 1, tableau)
     } else {
       return tab
@@ -67,8 +68,7 @@ export default (props) =>
         document.getElementById('searchByCountry').onclick = function (evt) {
           const activePoints = lineChart.getElementsAtEvent(evt)
           if (activePoints.length > 0) {
-            const label = datas.labels[activePoints[0]._index] // TODO GERER ERREUR
-            // console.log(props.data.countryList.find(c => c.name === label))
+            const label = datas.labels[activePoints[0]._index]
             props.data.countryList && props.data.countryList.length > 0 && (
               props.data.toggleCountry(label)
             )

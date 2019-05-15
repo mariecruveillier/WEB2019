@@ -22,7 +22,9 @@ export default (props) =>
     }} />
     <div id='mainViewer'>
       <div>
-        <h1>Animalia</h1>
+        <div id='logo'>
+          <img src = '../../assets/logo2.png'/>
+        </div>
         <section id='searchContainer'>
           <input id='searchBar' type="text" placeholder='Research...'
             onkeyup = {(e) => {
