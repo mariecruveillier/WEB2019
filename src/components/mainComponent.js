@@ -21,9 +21,9 @@ export default (props) =>
       classNames: props.data.classNames
     }} />
     <div id='mainViewer'>
-      <div>
-        <div id='logo'>
-          <img src = '../../assets/logo2.png'/>
+      <div id='graphContainer'>
+        <div>
+          <img src = '../../assets/logo2.png'  id='logo'/>
         </div>
         <section id='searchContainer'>
           <input id='searchBar' type="text" placeholder='Research...'
@@ -32,13 +32,7 @@ export default (props) =>
             }
             }
           />
-        </section>
-        <section id='mainGraphs'>
-          <CountryChart data={{countryList: props.data.countryList, setErrorMess: props.data.setErrorMess, toggleCountry: props.data.toggleCountry}}/>
-          <BubbleChart data={{regionList: props.data.regionList, setErrorMess: props.data.setErrorMess}}/>
-          <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
-        </section>
-        <section id='result'>
+          <section id='result'>
           {
             !props.data.resultUpdated && props.data.researchData.country !== '' && (
               country().species({country: props.data.researchData.country}).then((resolvedValue) => {
@@ -66,6 +60,13 @@ export default (props) =>
             )
           }
         </section>
+        </section>
+        <section id='mainGraphs'>
+          <CountryChart data={{countryList: props.data.countryList, setErrorMess: props.data.setErrorMess, toggleCountry: props.data.toggleCountry}}/>
+          <BubbleChart data={{regionList: props.data.regionList, setErrorMess: props.data.setErrorMess}}/>
+          <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
+        </section>
+        
       </div>
     </div>
   </div>
