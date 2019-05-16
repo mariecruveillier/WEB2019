@@ -26,6 +26,12 @@ h1, h2, h3{
   margin-top: 50px;
 }
 
+#logo{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content : center;
+}
+
 #mainContainer{ 
   position: relative;
   width:  100%;
@@ -83,11 +89,10 @@ h1, h2, h3{
   border-right : 1px solid #AAA;
 }
 #mainViewer{
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content :center;
-  margin-left: 50px;
+  margin-left: 150px;
 }
 .category{
   cursor: pointer;
