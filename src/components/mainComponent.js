@@ -23,7 +23,9 @@ export default (props) =>
     <div id='mainViewer'>
       <div id='graphContainer'>
         <div>
-          <img src = '../../assets/logo2.png' id='logo'/>
+          <div id='logo'>
+            <img src = '../../assets/logo2.png'/>
+          </div>
         </div>
         <section id='searchContainer'>
           <input id='searchBar' type="text" placeholder='Research...'

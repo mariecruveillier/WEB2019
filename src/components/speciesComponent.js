@@ -30,7 +30,7 @@ export default (props) =>
         </section>
         <div className = 'speciesInfo'>
           <section id='textualInfos' className='speciesBloc'>
-            <div class='specieBox'>
+            <div class='specieBox' id='danger'>
               <h2>DANGERS</h2>
               <ul>
                 {
@@ -72,11 +72,11 @@ export default (props) =>
             <div class='specieBox'>
               <h2>SINCE ...</h2>
             </div>
-            <div class='specieBox'>
+            <div class='specieBox' id='population'>
               <h2>POPULATION</h2>
               {
                 props.data.detailSpecies.populationTrend.state && (
-                  <p>{props.data.detailSpecies.populationTrend.val}</p>
+                  <img src = {'../../assets/' + props.data.detailSpecies.populationTrend.val + '.png'}/>
                 )
               }
             </div>

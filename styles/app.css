@@ -22,12 +22,9 @@ h1, h2, h3{
 }
 
 #logo{
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin-top: 50px;
-}
-
-#logo{
   display: flex;
   flex-wrap: wrap;
   justify-content : center;
@@ -51,7 +48,7 @@ h1, h2, h3{
 
 .wrapperGraph{
   width: 350px; 
-  height: 300px !important;
+  height: 350px !important;
   display: flex;
   position: relative;
   margin: 0 10px;
@@ -92,7 +89,10 @@ h1, h2, h3{
   height: 100%;
   width: 150px;
   background: rgba(0,0,0,0.2);
-  border-right : 1px solid #AAA;
+  box-shadow: 1px 1px 7px #4F4F4F;
+  display: flex;
+  justify-content : space-around;
+  flex-direction : column;
 }
 #mainViewer{
   margin-left: 150px;
@@ -100,7 +100,7 @@ h1, h2, h3{
 #graphContainer{
   display: flex;
   flex-wrap: wrap;
-  justify-content :center   ;
+  justify-content :center ;
 }
 
 .category{
@@ -132,6 +132,8 @@ h1, h2, h3{
   left: 100%;
   top: 0;
   z-index:  3;
+  display: flex;
+  justify-content: space-around;
 }
 #speciesDetail.active{
   left: 0;
@@ -140,13 +142,35 @@ h1, h2, h3{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  justify-content: space-between;
 }
 .specieBox{
-  width: 400px;
+  width: 500px;
   height: auto;
+  text-align : left;
+  border-bottom: 1px solid #191a1c;
+}
+
+.specieBox ul{
+  list-style-type: none;
+}
+
+#danger{
+  color: #880000;
+}
+
+#population img{
+  width: 200px;
+  height: 200px;
+  background-color: #4F4F4F;
+  border-radius:50%;
+}
+
+#danger h2{
+  color: #000;
 }
 #headerSpecies{
-  border-bottom: 2px solid #191a1c;
+  border-bottom: 1px solid #191a1c;
 }
 .italic{
   font-style: italic;
@@ -172,20 +196,17 @@ h1, h2, h3{
 }
 
 #classNameList img {
-  width: 45px;
-  height: 45px;
-  box-shadow:0.5px 0.5px 0.5px 0.5px #595656;
-  margin-right:25px;
-  margin-left:25px;
-  border-radius:2px;
-  justify-content: center;
+  width: 57px;
+  height: 57px;
 }
 
+#categoryList {
+}
 .speciesInfo{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-content: space-around;
+  align-content: space-between;
 }
 
 .speciesBloc{
@@ -197,7 +218,7 @@ h1, h2, h3{
 }
 
 .specieBox{
-  width: 350px;
+  width: 450px;
 }
 
 .activeClassName{

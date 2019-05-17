@@ -35,13 +35,15 @@ export default (props) =>
         )
       }
     </div>
-    <div id='classNameList'>
-      {
-        props.data.classNames && props.data.classNames.length > 0 && (
-          props.data.classNames.map(res => {
-            return <img src = {'../../assets/' + res.name + '.png'} className={res.state ? 'activeClassName' : ''} onclick = {() => props.data.toggleCompGroup(res.name)}/>
-          })
-        )
-      }
+    <div>
+      <div id='classNameList'>
+        {
+          props.data.classNames && props.data.classNames.length > 0 && (
+            props.data.classNames.map(res => {
+              return <img src = {'../../assets/' + res.name + '.png'} className={res.state ? 'activeClassName' : ''} onclick = {() => props.data.toggleCompGroup(res.name)}/>
+            })
+          )
+        }
+      </div>
     </div>
   </section>
