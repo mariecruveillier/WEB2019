@@ -28,10 +28,10 @@ export default (props) =>
             )}
           </div>
         </section>
-        <div className = 'speciesInfo'>
-          <section id='textualInfos' className='speciesBloc'>
-            <div class='specieBox'>
-              <h2>DANGERS</h2>
+        <div class = 'speciesInfo'>
+          <div class='specieBox'>
+            <h2>DANGERS</h2>{
+            if (props.data.detailSpecies.threats.val.length > 0){
               <ul>
                 {
                   props.data.detailSpecies.threats.state && (
@@ -41,50 +41,50 @@ export default (props) =>
                   )
                 }
               </ul>
-            </div>
-            <div class='specieBox'>
-              <h2>HABITATS</h2>
-              <ul>
-                {
-                  props.data.detailSpecies.habitats.state && (
-                    props.data.detailSpecies.habitats.val.map(res => {
-                      return <li id={`habitats_${res.habitat}`}>{res.habitat}</li>
-                    })
-                  )
-                }
-              </ul>
-            </div>
-            <div class='specieBox'>
-              <h2>MEASURE</h2>
-              <ul>
-                {
-                  props.data.detailSpecies.measures.state && (
-                    props.data.detailSpecies.measures.val.map(res => {
-                      return <li id={`measure_${res.title}`}>{res.title}</li>
-                    })
-                  )
-                }
-              </ul>
-            </div>
-          </section>
-
-          <section id='graphicsSpecies' className='speciesBloc'>
-            <div class='specieBox'>
-              <h2>SINCE ...</h2>
-            </div>
-            <div class='specieBox'>
-              <h2>POPULATION</h2>
+            }
+            else {
+              <h3>Unspecidief Data</h3>
+            }}
+          </div>
+          <div class='specieBox'>
+            <h2>HABITATS</h2>
+            <ul>
               {
-                props.data.detailSpecies.populationTrend.state && (
-                  <p>{props.data.detailSpecies.populationTrend.val}</p>
+                props.data.detailSpecies.habitats.state && (
+                  props.data.detailSpecies.habitats.val.map(res => {
+                    return <li id={`habitats_${res.habitat}`}>{res.habitat}</li>
+                  })
                 )
               }
-            </div>
-            <div class='specieBox'>
-              <h2>CATEGORY</h2>
-              <HistoricGraph data={{historical: props.data.detailSpecies.historical}} />
-            </div>
-          </section>
+            </ul>
+          </div>
+          <div class='specieBox'>
+            <h2>MEASURE</h2>
+            <ul>
+              {
+                props.data.detailSpecies.measures.state && (
+                  props.data.detailSpecies.measures.val.map(res => {
+                    return <li id={`measure_${res.title}`}>{res.title}</li>
+                  })
+                )
+              }
+            </ul>
+          </div>
+          <div class='specieBox'>
+            <h2>SINCE ...</h2>
+          </div>
+          <div class='specieBox'>
+            <h2>POPULATION</h2>
+            {
+              props.data.detailSpecies.populationTrend.state && (
+                <p>{props.data.detailSpecies.populationTrend.val}</p>
+              )
+            }
+          </div>
+          <div class='specieBox'>
+            <h2>CATEGORY</h2>
+            <HistoricGraph data={{historical: props.data.detailSpecies.historical}} />
+          </div>
         </div>
         <section id='countryList'>
         </section>

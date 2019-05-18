@@ -176,22 +176,26 @@ h1, h2, h3{
 
 .speciesInfo{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-content: space-around;
-}
 
+}
+/*
 .speciesBloc{
   display: flex;
   flex-direction: row;
   justify-content:  space-around;
   flex-wrap: wrap;
   height: 50%;
-}
+}*/
+
 
 .specieBox{
-  width: 350px;
+  width: 500px;
 }
+
 
 .activeClassName{
   border: 2px solid #fff;
