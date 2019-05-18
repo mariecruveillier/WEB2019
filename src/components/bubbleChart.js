@@ -12,79 +12,80 @@ export default (props) =>
         oncreate={(element) => {
           let ctx = element.getContext('2d')
 
+          const datas = [
+            // Le golf du mexique
+            {
+              label: [
+                props.data.regionList[10].name,
+                props.data.regionList[10].count
+              ],
+              backgroundColor: 'rgba(60,186,0,0.2)',
+              borderColor: 'rgba(60,186,0,1)',
+              data: [{
+                x: -4,
+                y: 2.5,
+                r: 1 + props.data.regionList[10].count / 500
+              }]
+            },
+            {
+              // L'europe
+              label: [
+                props.data.regionList[3].name,
+                props.data.regionList[3].count
+              ],
+              backgroundColor: 'rgba(60,186,159,0.2)',
+              borderColor: 'rgba(60,186,159,1)',
+              data: [{
+                x: 0.8,
+                y: 5.7,
+                r: 1 + props.data.regionList[3].count / 500
+              }]
+            },
+            {
+              // La mer mediteranee
+              label: [
+                props.data.regionList[5].name,
+                props.data.regionList[5].count
+              ],
+              backgroundColor: 'rgba(200,0,0,0.2)',
+              borderColor: 'rgba(200,0,0,1)',
+              data: [{
+                x: 0.5,
+                y: 3.7,
+                r: 1 + props.data.regionList[5].count / 500
+              }]
+            },
+            {
+              // La pan-Afrique soit quasiment toute l'afrique
+              label: [
+                props.data.regionList[9].name,
+                props.data.regionList[9].count
+              ],
+              backgroundColor: 'rgba(255,221,50,0.2)',
+              borderColor: 'rgba(255,221,50,1)',
+              data: [{
+                x: 0.7,
+                y: 2,
+                r: 1 + props.data.regionList[9].count / 500
+              }]
+            },
+            {
+              // Le golf persique
+              label: [
+                props.data.regionList[1].name,
+                props.data.regionList[1].count
+              ],
+              backgroundColor: 'rgba(180,120,180,0.2)',
+              borderColor: 'rgba(180,120,180,1)',
+              data: [{
+                x: 3,
+                y: 2.4,
+                r: 1 + props.data.regionList[1].count / 500
+              }]
+            }
+          ]
           const bubbleData = {
-            datasets: [
-              // Le golf du mexique
-              {
-                label: [
-                  props.data.regionList[10].name,
-                  props.data.regionList[10].count
-                ],
-                backgroundColor: 'rgba(60,186,0,0.2)',
-                borderColor: 'rgba(60,186,0,1)',
-                data: [{
-                  x: -4,
-                  y: 2.5,
-                  r: 1 + props.data.regionList[10].count / 500
-                }]
-              },
-              {
-                // L'europe
-                label: [
-                  props.data.regionList[3].name,
-                  props.data.regionList[3].count
-                ],
-                backgroundColor: 'rgba(60,186,159,0.2)',
-                borderColor: 'rgba(60,186,159,1)',
-                data: [{
-                  x: 0.8,
-                  y: 5.7,
-                  r: 1 + props.data.regionList[3].count / 500
-                }]
-              },
-              {
-                // La mer mediteranee
-                label: [
-                  props.data.regionList[5].name,
-                  props.data.regionList[5].count
-                ],
-                backgroundColor: 'rgba(200,0,0,0.2)',
-                borderColor: 'rgba(200,0,0,1)',
-                data: [{
-                  x: 0.5,
-                  y: 3.7,
-                  r: 1 + props.data.regionList[5].count / 500
-                }]
-              },
-              {
-                // La pan-Afrique soit quasiment toute l'afrique
-                label: [
-                  props.data.regionList[9].name,
-                  props.data.regionList[9].count
-                ],
-                backgroundColor: 'rgba(255,221,50,0.2)',
-                borderColor: 'rgba(255,221,50,1)',
-                data: [{
-                  x: 0.7,
-                  y: 2,
-                  r: 1 + props.data.regionList[9].count / 500
-                }]
-              },
-              {
-                // Le golf persique
-                label: [
-                  props.data.regionList[1].name,
-                  props.data.regionList[1].count
-                ],
-                backgroundColor: 'rgba(180,120,180,0.2)',
-                borderColor: 'rgba(180,120,180,1)',
-                data: [{
-                  x: 3,
-                  y: 2.4,
-                  r: 1 + props.data.regionList[1].count / 500
-                }]
-              }
-            ]
+            datasets: datas
           }
 
           const bubbleOptions = {
@@ -137,7 +138,16 @@ export default (props) =>
             data: bubbleData,
             options: bubbleOptions
           })
-        }}
+          document.getElementById('bubble-chart').onclick = (evt) => {
+            const activeRegion = bubbleChart.getElementsAtEvent(evt)
+            if (activeRegion[0]) {
+              console.log(activeRegion[0])
+              const label = bubbleData.datasets[activeRegion[0]._index].label[0]
+              console.log(label)
+            }
+          }
+        }
+        }
       />
     )}
   </div>
