@@ -32,6 +32,7 @@ const species = () => {
     }),
 
     fetch: (options) => new Promise((resolve, reject) => {
+      console.log(options)
       if (!options.hasOwnProperty('page')) {
         return reject(new Error('The page option is required.'))
       }

@@ -144,7 +144,7 @@ export default (props) =>
               const charData = activeRegion[0]['_chart'].config.data
               const idx = activeRegion[0]['_datasetIndex']
               const label = charData.datasets[idx].label[0]
-              console.log(label)
+              props.data.toggleRegion(label)
             }
           }
         }

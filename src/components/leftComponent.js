@@ -7,7 +7,10 @@ import {className} from '../wrapper/className'
 */
 
 export default (props) =>
-  <section id='leftPanel'>
+  <section id='leftPanel' className={props.data.menuState ? 'active' : ''}>
+    <div id='menuTrigger'>
+      <img src='../../assets/triggerMenu.png' onclick = {() => props.data.toggleMenu()} />
+    </div>
     {
       !props.data.categoryList && (
         category().list().then((resolvedValue) => {

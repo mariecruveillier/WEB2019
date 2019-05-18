@@ -32,6 +32,11 @@ export default (props) =>
           <section id='textualInfos' className='speciesBloc'>
             <div class='specieBox' id='danger'>
               <h2>DANGERS</h2>
+              {
+                !props.data.detailSpecies.threats.state && (
+                  <img src='../../assets/gifLoading.gif' alt='loadingGif' class='loadingGif'/>
+                )
+              }
               <ul>
                 {
                   props.data.detailSpecies.threats.state && (
@@ -44,6 +49,11 @@ export default (props) =>
             </div>
             <div class='specieBox'>
               <h2>HABITATS</h2>
+              {
+                !props.data.detailSpecies.habitats.state && (
+                  <img src='../../assets/gifLoading.gif' alt='loadingGif' class='loadingGif'/>
+                )
+              }
               <ul>
                 {
                   props.data.detailSpecies.habitats.state && (
@@ -56,6 +66,11 @@ export default (props) =>
             </div>
             <div class='specieBox'>
               <h2>MEASURE</h2>
+              {
+                !props.data.detailSpecies.measures.state && (
+                  <img src='../../assets/gifLoading.gif' alt='loadingGif' class='loadingGif'/>
+                )
+              }
               <ul>
                 {
                   props.data.detailSpecies.measures.state && (
@@ -69,14 +84,24 @@ export default (props) =>
           </section>
 
           <section id='graphicsSpecies' className='speciesBloc'>
-            <div class='specieBox'>
-              <h2>SINCE ...</h2>
+            <div class='specieBox bubbleInfos'>
+              <h2>SINCE {props.data.detailSpecies.historical.state ? (props.data.detailSpecies.historical.val[0] ? props.data.detailSpecies.historical.val[0].year : '...') : '...'}</h2>
+              <div id='sinceDiv'>
+                <p>{props.data.detailSpecies.historical.state ? (props.data.detailSpecies.historical.val[0] ? props.data.detailSpecies.historical.val[0].category : 'Data not specified') : 'Data not specified'}</p>
+              </div>
             </div>
-            <div class='specieBox' id='population'>
+            <div class='specieBox bubbleInfos' id='population'>
               <h2>POPULATION</h2>
               {
+                !props.data.detailSpecies.populationTrend.state && (
+                  <img src='../../assets/gifLoading.gif' alt='loadingGif' class='loadingGif'/>
+                )
+              }
+              {
                 props.data.detailSpecies.populationTrend.state && (
-                  <img src = {'../../assets/' + props.data.detailSpecies.populationTrend.val + '.png'}/>
+                  <div id='popTrend'>
+                    <img src = {'../../assets/' + props.data.detailSpecies.populationTrend.val + '.png'}/>
+                  </div>
                 )
               }
             </div>
