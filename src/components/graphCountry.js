@@ -32,7 +32,6 @@ export default (props) =>
         }
 
         const chartOptions = {
-          // onClick: display(),
           scales: {
             xAxes: [{
               gridLines: {

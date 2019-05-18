@@ -139,10 +139,11 @@ export default (props) =>
             options: bubbleOptions
           })
           document.getElementById('bubble-chart').onclick = (evt) => {
-            const activeRegion = bubbleChart.getElementsAtEvent(evt)
+            const activeRegion = bubbleChart.getElementAtEvent(evt)
             if (activeRegion[0]) {
-              console.log(activeRegion[0])
-              const label = bubbleData.datasets[activeRegion[0]._index].label[0]
+              const charData = activeRegion[0]['_chart'].config.data
+              const idx = activeRegion[0]['_datasetIndex']
+              const label = charData.datasets[idx].label[0]
               console.log(label)
             }
           }
