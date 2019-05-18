@@ -202,12 +202,24 @@ h1, h2, h3{
 #danger h2{
   color: #000;
 }
+
 #headerSpecies{
   border-bottom: 1px solid #191a1c;
 }
 #headerSpecies span{
   margin: 5px;
+  background-color:yellow;
 }
+
+#headerSpecies h1{
+  font-size:  37px;
+  padding: 0px;
+}
+
+#headerSpecies p{
+  font-weight: bold;
+}
+
 .italic{
   font-style: italic;
 }
@@ -238,6 +250,7 @@ h1, h2, h3{
 
 #categoryList {
 }
+
 .speciesInfo{
   display: flex;
   flex-direction: column;

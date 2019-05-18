@@ -24,7 +24,7 @@ export default (props) =>
             }
             </p>
             {props.data.detailSpecies.scientificName.state && (
-              <p><span class='italic'>Scientific name:</span> {props.data.detailSpecies.scientificName.val}</p>
+              <p> <div class='italic'>Scientific name: </div> {props.data.detailSpecies.scientificName.val}</p>
             )}
           </div>
         </section>
