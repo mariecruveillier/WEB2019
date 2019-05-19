@@ -23,7 +23,7 @@ const eq2 = {
   'Gastropods': 'GASTROPODA',
   'Amphibia': 'AMPHIBIA',
   'Mammals': 'MAMMALIA',
-  'Crustaceans': 'MALACOSTRACA' 
+  'Crustaceans': 'MALACOSTRACA'
 }
 
 export default (props) =>
@@ -52,11 +52,11 @@ export default (props) =>
               position: 'top'
             },
             responsive: true,
-            aspectRatio: 1, 
+            aspectRatio: 1,
             title: {
               display: true,
               text: 'Species by Category'
-            }, 
+            },
             scale: {
               ticks: {
                 beginAtZero: true

@@ -258,20 +258,10 @@ h1, h2, h3{
   justify-content: space-around;
   align-content: space-around;
 }
-/*
-.speciesBloc{
-  display: flex;
-  flex-direction: row;
-  justify-content:  space-around;
-  flex-wrap: wrap;
-  height: 50%;
-}*/
-
 
 .specieBox{
   width: 450px;
 }
-
 
 .activeClassName{
   border: 2px solid #fff;
@@ -309,4 +299,20 @@ h1, h2, h3{
   #mainViewer{
     margin: 0;
   }
+}
+
+.specieCountries{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+.countryName{
+  float: left;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.strikethrough{
+  text-decoration: line-through;
 }

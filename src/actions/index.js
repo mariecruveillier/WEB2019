@@ -178,6 +178,22 @@ export default {
     return newState
   },
 
+  setSpecieCountries: (historical) => (state) => {
+    const allKeys = Object.keys(state.activeSpeciesInfos)
+    const countKeys = allKeys.length
+    const countActive = allKeys.reduce((acc, n) => state.activeSpeciesInfos[n].state ? acc + 1 : acc + 0, 0) + 1 // Count the number of loaded parts in the species Component
+
+    const newState = ({
+      ...state,
+      activeSpeciesInfos: {
+        ...state.activeSpeciesInfos,
+        countries: {val: historical.result, state: true}
+      },
+      checkAllActive: countActive >= countKeys
+    })
+    return newState
+  },
+
   setPopulation: (pop) => (state) => {
     const allKeys = Object.keys(state.activeSpeciesInfos)
     const countKeys = allKeys.length

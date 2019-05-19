@@ -102,23 +102,20 @@ export default (props) =>
             }
           </div>
           <div class='specieBox'>
-            <h2>SINCE ...</h2>
-          </div>
-          <div class='specieBox'>
-            <h2>POPULATION</h2>
-            {
-              props.data.detailSpecies.populationTrend.state && (
-                <p>{props.data.detailSpecies.populationTrend.val}</p>
-              )
-            }
-          </div>
-          <div class='specieBox'>
             <h2>CATEGORY</h2>
             <HistoricGraph data={{historical: props.data.detailSpecies.historical}} />
           </div>
         </div>
-        <section id='countryList'>
-        </section>
+        <div class='countryList'>
+          <h2>Specie countries</h2>
+          <section id='specieCountries'>
+            {
+              props.data.detailSpecies.countries.val.map(res => {
+                return res.presence === "Extant" ? <p class='countryName'>{res.country}</p> : <p class='countryName strikethrough'>{res.country}</p>
+              })
+            }
+          </section>
+        </div>
       </div>
     )}
   </div>

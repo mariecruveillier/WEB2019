@@ -18,7 +18,7 @@ export default (props) =>
       setErrorMess: props.data.setErrorMess,
       toggleCategory: props.data.toggleCategory,
       toggleCompGroup: props.data.toggleCompGroup,
-      classNames: props.data.classNames,  
+      classNames: props.data.classNames,
       toggleMenu: props.data.toggleMenu,
       menuState: props.data.menuState
     }} />

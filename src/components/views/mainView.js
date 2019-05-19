@@ -34,7 +34,7 @@ export default (state, actions) =>
       )
     }
 
-    /* 
+    /*
       Loading active Species Data
     */
     {
@@ -89,6 +89,15 @@ export default (state, actions) =>
       !state.activeSpeciesInfos.historical.state && state.activeSpeciesInfos.id.val !== -1 && (
         Wrapper.Species.historical({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
           actions.setHistorical(resolvedValue)
+        }, (error) => {
+          actions.setErrorMess(error)
+        })
+      )
+    }
+    {
+      !state.activeSpeciesInfos.countries.state && state.activeSpeciesInfos.id.val !== -1 && (
+        Wrapper.Species.countries({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
+          actions.setSpecieCountries(resolvedValue)
         }, (error) => {
           actions.setErrorMess(error)
         })

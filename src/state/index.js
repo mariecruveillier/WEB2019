@@ -10,7 +10,8 @@ export default {
     habitats: {val: [], state: false},
     measures: {val: [], state: false},
     populationTrend: {val: '', state: false},
-    historical: {val: '', state: false}
+    historical: {val: '', state: false},
+    countries: {val: [], state: false}
   },
   checkAllActive: false,
   researchData: {
