@@ -11,6 +11,7 @@ export default {
 
   // Setting the result
   setResult: (data) => (state) => {
+    window.scrollTo(0, 0)
     const newState = ({
       ...state,
       researchData: {
@@ -121,7 +122,7 @@ export default {
       ...state,
       activeSpeciesInfos: {
         ...state.activeSpeciesInfos,
-        threats: {val: threats.result, state: true}
+        threats: {val: threats.result.length === 0 ? [{title: 'Data not specified'}] : threats.result, state: true}
       },
       checkAllActive: countActive >= countKeys
     })
@@ -166,9 +167,6 @@ export default {
     const countKeys = allKeys.length
     const countActive = allKeys.reduce((acc, n) => state.activeSpeciesInfos[n].state ? acc + 1 : acc + 0, 0) + 1 // Count the number of loaded parts in the species Component
 
-    console.log('setHistorical')
-    console.log(historical)
-
     const newState = ({
       ...state,
       activeSpeciesInfos: {
@@ -189,7 +187,7 @@ export default {
       ...state,
       activeSpeciesInfos: {
         ...state.activeSpeciesInfos,
-        populationTrend: {val: pop.populationTrend[0].populationTrend ? pop.populationTrend[0].populationTrend : 'Unknown', state: true}
+        populationTrend: {val: pop.populationTrend[0].populationTrend ? pop.populationTrend[0].populationTrend : 'Data not specified', state: true}
       },
       checkAllActive: countActive >= countKeys
     })
@@ -206,7 +204,7 @@ export default {
       activeSpeciesInfos: {
         ...state.activeSpeciesInfos,
         commonName: {val: infos.res.reduce((acc, n) => [...acc, {name: n.name, main: n.main}], []), state: true},
-        scientificName: {val: infos.res[0] ? infos.res[0].scientificName : 'Unknown', state: true}
+        scientificName: {val: infos.res[0] ? infos.res[0].scientificName : 'Data not specified', state: true}
       },
       checkAllActive: countActive >= countKeys
     })
@@ -261,10 +259,32 @@ export default {
     return ({
       ...state,
       researchData: {
-        ...state.researchData,
+        input: '',
+        className: '',
+        category: '',
+        region: '',
         country: state.country.find(c => c.name === name).countryCode,
         updated: false
       }
+    })
+  },
+  toggleRegion: (name) => (state) => {
+    return ({
+      ...state,
+      researchData: {
+        input: '',
+        className: '',
+        category: '',
+        country: '',
+        region: name.toLowerCase().split(' ').join('_'),
+        updated: false
+      }
+    })
+  },
+  toggleMenu: () => (state) => {
+    return ({
+      ...state,
+      menuState: !state.menuState
     })
   }
 }

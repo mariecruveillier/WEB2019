@@ -33,6 +33,10 @@ export default (state, actions) =>
         })
       )
     }
+
+    /* 
+      Loading active Species Data
+    */
     {
       !state.activeSpeciesInfos.threats.state && state.activeSpeciesInfos.id.val !== -1 && (
         // Load Threat
@@ -56,7 +60,6 @@ export default (state, actions) =>
     }
     {
       !state.activeSpeciesInfos.populationTrend.state && state.activeSpeciesInfos.id.val !== -1 && (
-        // Load Measure ICICICICICCICI
         Wrapper.Species.populationTrend({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
           actions.setPopulation(resolvedValue)
         }, (error) => {
@@ -66,7 +69,6 @@ export default (state, actions) =>
     }
     {
       !state.activeSpeciesInfos.measures.state && state.activeSpeciesInfos.id.val !== -1 && (
-        // Load Measure ICICICICICCICI
         Wrapper.Measure.fetch({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
           actions.setMeasure(resolvedValue)
         }, (error) => {
@@ -76,7 +78,6 @@ export default (state, actions) =>
     }
     {
       !state.activeSpeciesInfos.commonName.state && !state.activeSpeciesInfos.scientificName.state && state.activeSpeciesInfos.id.val !== -1 && (
-        // Load Measure ICICICICICCICI
         Wrapper.Species.nameInfo({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
           actions.setNameInfo(resolvedValue)
         }, (error) => {
@@ -106,6 +107,7 @@ export default (state, actions) =>
       toggleCategory: actions.toggleCategory,
       toggleCompGroup: actions.toggleCompGroup,
       toggleCountry: actions.toggleCountry,
+      toggleRegion: actions.toggleRegion,
       categoryList: state.categoryList,
       setResearchData: actions.setResearchData,
       resultUpdated: state.researchData.updated,
@@ -114,9 +116,12 @@ export default (state, actions) =>
         className: state.researchData.className,
         category: state.researchData.category,
         country: state.researchData.country,
+        region: state.researchData.region,
         limit: 8
       },
-      setActive: actions.setActiveSpecies
+      setActive: actions.setActiveSpecies,
+      toggleMenu: actions.toggleMenu,
+      menuState: state.menuState
     }}/>
 
     {!state.checkAllActive && state.activeSpeciesInfos.id.val !== -1 && (

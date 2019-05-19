@@ -7,7 +7,10 @@ import {className} from '../wrapper/className'
 */
 
 export default (props) =>
-  <section id='leftPanel'>
+  <section id='leftPanel' className={props.data.menuState ? 'active' : ''}>
+    <div id='menuTrigger'>
+      <img src='../../assets/triggerMenu.png' onclick = {() => props.data.toggleMenu()} />
+    </div>
     {
       !props.data.categoryList && (
         category().list().then((resolvedValue) => {
@@ -35,13 +38,15 @@ export default (props) =>
         )
       }
     </div>
-    <div id='classNameList'>
-      {
-        props.data.classNames && props.data.classNames.length > 0 && (
-          props.data.classNames.map(res => {
-            return <img src = {'../../assets/' + res.name + '.png'} className={res.state ? 'activeClassName' : ''} onclick = {() => props.data.toggleCompGroup(res.name)}/>
-          })
-        )
-      }
+    <div>
+      <div id='classNameList'>
+        {
+          props.data.classNames && props.data.classNames.length > 0 && (
+            props.data.classNames.map(res => {
+              return <img src = {'../../assets/' + res.name + '.png'} className={res.state ? 'activeClassName' : ''} onclick = {() => props.data.toggleCompGroup(res.name)}/>
+            })
+          )
+        }
+      </div>
     </div>
   </section>

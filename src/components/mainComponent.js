@@ -18,12 +18,16 @@ export default (props) =>
       setErrorMess: props.data.setErrorMess,
       toggleCategory: props.data.toggleCategory,
       toggleCompGroup: props.data.toggleCompGroup,
-      classNames: props.data.classNames
+      classNames: props.data.classNames,  
+      toggleMenu: props.data.toggleMenu,
+      menuState: props.data.menuState
     }} />
     <div id='mainViewer'>
       <div id='graphContainer'>
         <div>
-          <img src = '../../assets/logo2.png' id='logo'/>
+          <div id='logo'>
+            <img src = '../../assets/logo2.png'/>
+          </div>
         </div>
         <section id='searchContainer'>
           <input id='searchBar' type="text" placeholder='Research...'
@@ -36,7 +40,15 @@ export default (props) =>
             {
               !props.data.resultUpdated && props.data.researchData.country !== '' && (
                 country().species({country: props.data.researchData.country}).then((resolvedValue) => {
-                  console.log(resolvedValue)
+                  props.data.setResult({list: resolvedValue.result.slice(0, 8), from: 'redlist'})
+                }, (error) => {
+                  props.data.setErrorMess(error)
+                })
+              )
+            }
+            {
+              !props.data.resultUpdated && props.data.researchData.region !== '' && (
+                species().fetch({region: props.data.researchData.region, page: 0}).then((resolvedValue) => {
                   props.data.setResult({list: resolvedValue.result.slice(0, 8), from: 'redlist'})
                 }, (error) => {
                   props.data.setErrorMess(error)
@@ -63,8 +75,8 @@ export default (props) =>
         </section>
         <section id='mainGraphs'>
           <CountryChart data={{countryList: props.data.countryList, setErrorMess: props.data.setErrorMess, toggleCountry: props.data.toggleCountry}}/>
-          <BubbleChart data={{regionList: props.data.regionList, setErrorMess: props.data.setErrorMess}}/>
-          <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess}}/>
+          <BubbleChart data={{regionList: props.data.regionList, setErrorMess: props.data.setErrorMess, toggleRegion: props.data.toggleRegion}}/>
+          <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess, toggleCompGroup: props.data.toggleCompGroup}}/>
         </section>
       </div>
     </div>

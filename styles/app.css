@@ -22,9 +22,12 @@ h1, h2, h3{
 }
 
 #logo{
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content : center;
 }
 
 #mainContainer{ 
@@ -42,10 +45,16 @@ h1, h2, h3{
   align-content: space-around ;  
   margin-top: 5%;
 }
+.bubbleInfos{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
 
 .wrapperGraph{
   width: 350px; 
-  height: 300px !important;
+  height: 350px !important;
   display: flex;
   position: relative;
   margin: 0 10px;
@@ -86,7 +95,12 @@ h1, h2, h3{
   height: 100%;
   width: 150px;
   background: rgba(0,0,0,0.2);
-  border-right : 1px solid #AAA;
+  box-shadow: 1px 1px 7px #4F4F4F;
+  display: flex;
+  justify-content : space-around;
+  flex-direction : column;
+  z-index: 3;
+  transition: all ease .5s;
 }
 #mainViewer{
   margin-left: 150px;
@@ -94,8 +108,9 @@ h1, h2, h3{
 #graphContainer{
   display: flex;
   flex-wrap: wrap;
-  justify-content :center   ;
+  justify-content :center ;
 }
+
 .category{
   cursor: pointer;
 }
@@ -125,6 +140,9 @@ h1, h2, h3{
   left: 100%;
   top: 0;
   z-index:  3;
+  display: flex;
+  justify-content: space-around;
+  padding: 25px 0;
 }
 #speciesDetail.active{
   left: 0;
@@ -133,14 +151,75 @@ h1, h2, h3{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  justify-content: space-between;
 }
 .specieBox{
-  width: 400px;
+  width: 500px;
   height: auto;
+  text-align : left;
+  border-bottom: 1px solid #191a1c;
+  transition: all ease .2s;
 }
+
+.specieBox ul{
+  list-style-type: none;
+}
+#sinceDiv{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid gray;
+  padding: 20px;
+}
+#sinceDiv p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  margin: 0;
+  text-align: center;font-weight: bold;
+}
+#danger{
+  color: #880000;
+}
+#popTrend{
+  width: 100px;
+  height: 100px;
+  background-color: #4F4F4F;
+  border-radius: 50%;
+  padding: 20px;
+  position: relative;
+}
+#popTrend img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 50%;
+}
+
+#danger h2{
+  color: #000;
+}
+
 #headerSpecies{
-  border-bottom: 2px solid #191a1c;
+  border-bottom: 1px solid #191a1c;
 }
+#headerSpecies span{
+  margin: 5px;
+  background-color:yellow;
+}
+
+#headerSpecies h1{
+  font-size:  37px;
+  padding: 0px;
+}
+
+#headerSpecies p{
+  font-weight: bold;
+}
+
 .italic{
   font-style: italic;
 }
@@ -165,13 +244,11 @@ h1, h2, h3{
 }
 
 #classNameList img {
-  width: 45px;
-  height: 45px;
-  box-shadow:0.5px 0.5px 0.5px 0.5px #595656;
-  margin-right:25px;
-  margin-left:25px;
-  border-radius:2px;
-  justify-content: center;
+  width: 57px;
+  height: 57px;
+}
+
+#categoryList {
 }
 
 .speciesInfo{
@@ -180,7 +257,6 @@ h1, h2, h3{
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: space-around;
-
 }
 /*
 .speciesBloc{
@@ -193,10 +269,44 @@ h1, h2, h3{
 
 
 .specieBox{
-  width: 500px;
+  width: 450px;
 }
 
 
 .activeClassName{
   border: 2px solid #fff;
+}
+.loadingGif{
+  width: 200px;
+  height: auto;
+}
+#menuTrigger{
+  display: none;
+}
+@media (max-width: 550px) {
+  #menuTrigger{
+    display: block;
+    position: absolute;
+    right: -40px;
+    top: 30px;
+    transition: all ease .3s;
+  }
+  #menuTrigger img{
+    width: 20px;
+    height: 20px;
+  }
+  #leftPanel{
+    width: 250px;
+    left: -250px;
+    background: #151719;
+  }
+  #leftPanel.active{
+    left: 0px;
+  }
+  #leftPanel.active #menuTrigger{
+    transform: rotate(180deg);
+  }
+  #mainViewer{
+    margin: 0;
+  }
 }

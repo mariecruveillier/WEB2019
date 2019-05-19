@@ -18,6 +18,8 @@ export default {
     className: '',
     category: '',
     country: '',
+    region: '',
     updated: true
-  }
+  },
+  menuState: false
 }
