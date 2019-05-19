@@ -91,7 +91,7 @@ export default (props) =>
           const bubbleOptions = {
             title: {
               display: true,
-              text: 'Endanger species by region'
+              text: 'Species by region'
             },
             bubble: {
               name: {

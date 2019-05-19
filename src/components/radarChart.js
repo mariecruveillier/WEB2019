@@ -37,13 +37,13 @@ export default (props) =>
           data: {
             labels: cpyArr.map(x => eq[x.name]),
             datasets: [{
-              label: 'Differents class of species',
-              backgroundColor: 'rgba(0, 0, 0, 0.4)',
-              borderColor: 'rgba(0, 0, 0, 1.0)',
-              pointBackgroundColor: 'rgba(255, 255, 255, 1)',
+              backgroundColor: 'rgba(60,150,159,0.2)',
+              borderColor: 'rgba(60,150,159, 1.0)',
+              borderWidth: 1,
+              pointBackgroundColor: 'rgba(60,150,159, 0.5)',
               data: cpyArr.map(x => x.count),
-              pointRadius: 10,
-              pointHoverRadius: 12
+              pointRadius: 5,
+              pointHoverRadius: 7
             }]
           },
           options: {

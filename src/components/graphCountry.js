@@ -24,7 +24,7 @@ export default (props) =>
         const datas = {
           labels: props.data.countryList.map(x => x.name),
           datasets: [{
-            label: ['number of species by country'],
+            label: props.data.countryList.count,
             data: props.data.countryList.map(x => x.count),
             fill: true,
             backgroundColor: randomColor(props.data.countryList.length)
@@ -32,6 +32,21 @@ export default (props) =>
         }
 
         const chartOptions = {
+          title: {
+            display: true,
+            text: 'Species by country'
+          },
+          legend: {
+            display: false
+          },
+          tooltips: {
+            enabled: true,
+            displayColors: false,
+            callbacks: {
+              label: (t, d) => datas.datasets[t.datasetIndex].label
+            }
+            // placement: 'node:center'
+          },
           scales: {
             xAxes: [{
               gridLines: {

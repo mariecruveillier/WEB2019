@@ -70,6 +70,11 @@ export default (props) =>
                 <img src='../../assets/gifLoading.gif' alt='loadingGif' class='loadingGif'/>
               )
             }
+            {
+              (props.data.detailSpecies.measures.val.length === 0) && (
+                <p> Data not specified </p>
+              )
+            }
             <ul>
               {
                 props.data.detailSpecies.measures.state && (
@@ -108,13 +113,18 @@ export default (props) =>
         </div>
         <div class='countryList'>
           <h2>Specie countries</h2>
-          <section id='specieCountries'>
+          <div id='specieCountries'>
+            {
+              (props.data.detailSpecies.countries.val.length === 0) && (
+                <p> Data not specified </p>
+              )
+            }
             {
               props.data.detailSpecies.countries.val.map(res => {
                 return res.presence === "Extant" ? <p class='countryName'>{res.country}</p> : <p class='countryName strikethrough'>{res.country}</p>
               })
             }
-          </section>
+          </div>
         </div>
       </div>
     )}
