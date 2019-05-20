@@ -24,7 +24,6 @@ h1, h2, h3{
 #logo{
   width: 250px;
   height: 250px;
-  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content : center;
@@ -53,8 +52,8 @@ h1, h2, h3{
 }
 
 .wrapperGraph{
-  width: 350px; 
-  height: 350px !important;
+  width: 400px; 
+  height: 400px !important;
   display: flex;
   position: relative;
   margin: 0 10px;
