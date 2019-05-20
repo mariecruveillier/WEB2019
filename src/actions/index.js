@@ -2,6 +2,9 @@ import {species} from '../wrapper/species'
 
 export default {
 
+  /*
+    Action that set the classNames after the call to the API
+  */
   setClassNames: (data) => (state) => {
     return ({
       ...state,
@@ -9,7 +12,9 @@ export default {
     })
   },
 
-  // Setting the result
+  /*
+    Action that set the result of the research
+  */
   setResult: (data) => (state) => {
     window.scrollTo(0, 0)
     const newState = ({
@@ -23,6 +28,9 @@ export default {
     return newState
   },
 
+  /*
+    Action that set the research Parameters
+  */
   setResearchData: (val) => (state) => { // [input, className, category, setResultat, setErrorMessage]
     const newState = ({
       ...state,
@@ -47,7 +55,9 @@ export default {
     return newState
   },
 
-  // Setting all the categories
+  /*
+    Action that set all the category
+  */
   setCategory: (data) => (state) => {
     return ({
       ...state,
@@ -55,7 +65,9 @@ export default {
     })
   },
 
-  // toggle (if it's false -> true, if it's true -> false) category that have been clicked
+  /*
+    Action that toggle (false if true | true if false) the categories
+  */
   toggleCategory: (name) => (state) => {
     const id = state.categoryList.indexOf(state.categoryList.find(el => el.name === name))
     const arr = state.categoryList.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
@@ -86,11 +98,17 @@ export default {
     }
   },
 
+  /*
+    Setting the error message
+  */
   setErrorMess: (mess) => (state) => ({
     ...state,
     errMess: mess
   }),
 
+  /*
+    Setting the country list
+  */
   setCountry: (data) => (state) => {
     return ({
       ...state,
@@ -98,6 +116,9 @@ export default {
     })
   },
 
+  /*
+    Setting the region list
+  */
   setRegion: (data) => (state) => {
     return ({
       ...state,
@@ -105,6 +126,9 @@ export default {
     })
   },
 
+  /*
+    Setting the active species with an id
+  */
   setActiveSpecies: (id) => (state) => {
     const newState = ({
       ...state,
@@ -117,6 +141,9 @@ export default {
     return newState
   },
 
+  /*
+    Setting the threats for the active species
+  */
   setThreat: (threats) => (state) => {
     const allKeys = Object.keys(state.activeSpeciesInfos)
     const countKeys = allKeys.length
@@ -134,6 +161,9 @@ export default {
     return newState
   },
 
+  /*
+    Setting the habitats for the active species
+  */
   setHabitat: (habitat) => (state) => {
     const allKeys = Object.keys(state.activeSpeciesInfos)
     const countKeys = allKeys.length
@@ -150,6 +180,9 @@ export default {
     return newState
   },
 
+  /*
+    Setting the Measures for the active  species
+  */
   setMeasure: (measure) => (state) => {
     const allKeys = Object.keys(state.activeSpeciesInfos)
     const countKeys = allKeys.length
@@ -166,6 +199,9 @@ export default {
     return newState
   },
 
+  /*
+    Setting the historical assessment for the active species
+  */
   setHistorical: (historical) => (state) => {
     const allKeys = Object.keys(state.activeSpeciesInfos)
     const countKeys = allKeys.length
@@ -182,6 +218,9 @@ export default {
     return newState
   },
 
+  /*
+    Setting the country list where the active species is located
+  */
   setSpecieCountries: (countries) => (state) => {
     const allKeys = Object.keys(state.activeSpeciesInfos)
     const countKeys = allKeys.length
@@ -198,6 +237,9 @@ export default {
     return newState
   },
 
+  /*
+    Setting the population state of the active species
+  */
   setPopulation: (pop) => (state) => {
     const allKeys = Object.keys(state.activeSpeciesInfos)
     const countKeys = allKeys.length
@@ -214,6 +256,9 @@ export default {
     return newState
   },
 
+  /*
+    Setting the scientific name and common names of the active species
+  */
   setNameInfo: (infos) => (state) => {
     const allKeys = Object.keys(state.activeSpeciesInfos)
     const countKeys = allKeys.length
@@ -231,6 +276,9 @@ export default {
     return newState
   },
 
+  /*
+    Reset all the data from the activeSpecies
+  */
   resetActiveSpecies: () => (state) => {
     return ({
       ...state,
@@ -250,7 +298,9 @@ export default {
     })
   },
 
-  // toggle (if it's false -> true, if it's true -> false) comprehensiveGroup that have been clicked
+  /*
+    Action that toggle (false if true | true if false) the compgroups
+  */
   toggleCompGroup: (name) => (state) => {
     const id = state.classNames.val.indexOf(state.classNames.val.find(el => el.name === name))
     const arr = state.classNames.val.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
@@ -280,6 +330,10 @@ export default {
       })
     }
   },
+
+  /*
+    Action that toggle (false if true | true if false) the country
+  */
   toggleCountry: (name) => (state) => {
     return ({
       ...state,
@@ -293,6 +347,10 @@ export default {
       }
     })
   },
+
+  /*
+    Action that toggle (false if true | true if false) the region
+  */
   toggleRegion: (name) => (state) => {
     return ({
       ...state,
@@ -306,6 +364,9 @@ export default {
       }
     })
   },
+  /*
+    Action that toggle (false if true | true if false) the left menu
+  */
   toggleMenu: () => (state) => {
     return ({
       ...state,

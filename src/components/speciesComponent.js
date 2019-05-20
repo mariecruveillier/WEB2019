@@ -132,7 +132,7 @@ export default (props) =>
             }
             {
               props.data.detailSpecies.countries.val.map(res => {
-                return res.presence === "Extant" ? <p class='countryName'>{res.country}</p> : <p class='countryName strikethrough'>{res.country}</p>
+                return res.presence === 'Extant' ? <p class='countryName'>{res.country}</p> : <p class='countryName strikethrough'>{res.country}</p>
               })
             }
           </div>
