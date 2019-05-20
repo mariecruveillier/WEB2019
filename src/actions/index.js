@@ -5,7 +5,7 @@ export default {
   setClassNames: (data) => (state) => {
     return ({
       ...state,
-      classNames: data.list.reduce((acc, n) => [...acc, {name: n.className, count: n.count, state: false}], [])
+      classNames: {val: data.list.reduce((acc, n) => [...acc, {name: n.className, count: n.count, state: false}], []), loaded: true}
     })
   },
 
@@ -64,6 +64,8 @@ export default {
         ...state,
         researchData: {
           ...state.researchData,
+          region: '',
+          country: '',
           category: '',
           updated: false
         },
@@ -74,6 +76,8 @@ export default {
         ...state,
         researchData: {
           ...state.researchData,
+          region: '',
+          country: '',
           category: name,
           updated: false
         },
@@ -248,27 +252,31 @@ export default {
 
   // toggle (if it's false -> true, if it's true -> false) comprehensiveGroup that have been clicked
   toggleCompGroup: (name) => (state) => {
-    const id = state.classNames.indexOf(state.classNames.find(el => el.name === name))
-    const arr = state.classNames.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
-    if (state.classNames[id].state) {
+    const id = state.classNames.val.indexOf(state.classNames.val.find(el => el.name === name))
+    const arr = state.classNames.val.reduce((acc, n) => [...acc, {name: n.name, state: false}], []) // setting all category to false (we don't want 2 activeted category at the same time)
+    if (state.classNames.val[id].state) {
       return ({
         ...state,
         researchData: {
           ...state.researchData,
+          region: '',
+          country: '',
           className: '',
           updated: false
         },
-        classNames: [...arr.slice(0, id), {name: name, count: state.classNames[id].count, state: !state.classNames[id].state}, ...arr.slice(id + 1, arr.length)]
+        classNames: {val: [...arr.slice(0, id), {name: name, count: state.classNames.val[id].count, state: !state.classNames.val[id].state}, ...arr.slice(id + 1, arr.length)], loaded: state.classNames.loaded}
       })
     } else {
       return ({
         ...state,
         researchData: {
           ...state.researchData,
+          region: '',
+          country: '',
           className: name,
           updated: false
         },
-        classNames: [...arr.slice(0, id), {name: name, count: state.classNames[id].count, state: !state.classNames[id].state}, ...arr.slice(id + 1, arr.length)]
+        classNames: {val: [...arr.slice(0, id), {name: name, count: state.classNames.val[id].count, state: !state.classNames.val[id].state}, ...arr.slice(id + 1, arr.length)], loaded: state.classNames.loaded}
       })
     }
   },

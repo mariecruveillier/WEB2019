@@ -76,7 +76,7 @@ export default (props) =>
         <section id='mainGraphs'>
           <CountryChart data={{countryList: props.data.countryList, setErrorMess: props.data.setErrorMess, toggleCountry: props.data.toggleCountry}}/>
           <BubbleChart data={{regionList: props.data.regionList, setErrorMess: props.data.setErrorMess, toggleRegion: props.data.toggleRegion}}/>
-          <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess, toggleCompGroup: props.data.toggleCompGroup}}/>
+          <RadarChart data={{classNames: props.data.classNames, setErrorMess: props.data.setErrorMess, toggleCompGroup: props.data.toggleCompGroup, classNamesLoaded: props.data.classNamesLoaded}}/>
         </section>
       </div>
     </div>

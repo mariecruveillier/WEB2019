@@ -28,7 +28,7 @@ const eq2 = {
 
 export default (props) =>
   <div className='wrapperGraph'>
-    {props.data.classNames && props.data.classNames.length > 0 && (
+    {props.data.classNames && props.data.classNamesLoaded && (
       <canvas className='mainChart' id='chartRadar' oncreate={(element) => {
         const cpyArr = props.data.classNames
         let ctx = element.getContext('2d')

@@ -1,5 +1,5 @@
 export default {
-  classNames: [],
+  classNames: {val: [], loaded: false},
   country: [],
   activeSpecies: false,
   activeSpeciesInfos: {

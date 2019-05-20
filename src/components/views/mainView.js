@@ -7,7 +7,7 @@ import Wrapper from '../../wrapper/index'
 export default (state, actions) =>
   <div id='mainContainer'>
     {
-      state.classNames.length === 0 && (
+      state.classNames.val.length === 0 && (
         Wrapper.ClassName.list({limit: 8}).then((resolvedValue) => {
           actions.setClassNames(resolvedValue)
         }, (error) => {
@@ -77,7 +77,7 @@ export default (state, actions) =>
       )
     }
     {
-      !state.activeSpeciesInfos.commonName.state && !state.activeSpeciesInfos.scientificName.state && state.activeSpeciesInfos.id.val !== -1 && (
+      !state.activeSpeciesInfos.commonName.state && state.activeSpeciesInfos.id.val !== -1 && (
         Wrapper.Species.nameInfo({id: state.activeSpeciesInfos.id.val}).then((resolvedValue) => {
           actions.setNameInfo(resolvedValue)
         }, (error) => {
@@ -104,7 +104,8 @@ export default (state, actions) =>
       )
     }
     <MainComponent data={{
-      classNames: state.classNames,
+      classNames: state.classNames.val,
+      classNamesLoaded: state.classNames.loaded,
       countryList: state.country,
       regionList: state.region,
       resultList: state.resultList,

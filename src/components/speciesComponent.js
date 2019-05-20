@@ -12,8 +12,19 @@ export default (props) =>
         </div>
         <section id='headerSpecies'>
           <div>
-            {props.data.detailSpecies.commonName.state && (
+            {props.data.detailSpecies.commonName.state && props.data.detailSpecies.commonName.val.find(x => x.main === 'true') && (
               <h1>{props.data.detailSpecies.commonName.val.find(x => x.main === 'true').name}</h1>
+            )}
+
+            {props.data.detailSpecies.commonName.state && !props.data.detailSpecies.commonName.val.find(x => x.main === 'true') && props.data.detailSpecies.commonName.val[0] && (
+              <h1>
+                {props.data.detailSpecies.commonName.val[0] && (
+                  props.data.detailSpecies.commonName.val[0].name
+                )}
+                {!props.data.detailSpecies.commonName.val[0] && props.data.detailSpecies.scientificName.state(
+                  props.data.detailSpecies.scientificName.val
+                )}
+              </h1>
             )}
             <p>{
               props.data.detailSpecies.commonName.state && (
@@ -112,7 +123,7 @@ export default (props) =>
           </div>
         </div>
         <div class='countryList'>
-          <h2>Specie countries</h2>
+          <h2>Species countries</h2>
           <div id='specieCountries'>
             {
               (props.data.detailSpecies.countries.val.length === 0) && (
